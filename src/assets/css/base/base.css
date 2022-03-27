@@ -1,0 +1,41 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('./grid.css');
+@import url('../fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css');
+
+@font-face {
+    font-family: Roboto;
+    src: url('../../font/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url('../../font/Roboto-Bold.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Italic;
+    src: url('../../font/Roboto-Italic.ttf');
+}
+
+@font-face {
+    font-family: Roboto-Black;
+    src: url('../../font/Roboto-Black.ttf');
+}
+
+
+* {
+  box-sizing: inherit;
+   
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: Roboto;
+    box-sizing: border-box;
+}
+
+.row__header {
+    border-bottom: 1px solid #f5f5f5;
+   
+}
