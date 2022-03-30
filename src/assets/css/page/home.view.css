@@ -1,0 +1,124 @@
+.home-views {
+  padding: 50px 0;
+}
+/* slider */
+
+/* intro text */
+.introduction {
+  font-size: 1.6rem;
+  margin-top: 22px;
+}
+.introduction__heading {
+  font-size: 2.8rem;
+}
+.introduction__paragraph {
+}
+.introduction__link {
+  color: #333;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.introduction__link:hover {
+  color: #fd5f32;
+}
+
+/* preferential */
+.preferential {
+  margin-top: 50px;
+}
+.preferential__grid {
+}
+.preferential__row {
+}
+.preferential__col {
+}
+.preferential__heading {
+  font-size: 2.8rem;
+}
+.preferential__paragraph {
+  font-size: 1.6rem;
+}
+
+/* additional information */
+.information {
+  margin-top: 50px;
+}
+.information__grid {
+}
+.information__row {
+}
+.information__column {
+  display: flex;
+  flex-direction: column;
+}
+.information__logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+  
+}
+.information__logo-img {
+  background: #333 url("../../img/292869636038211.png") no-repeat center center;
+  width: 70px;
+  height: 70px;
+  background-size: 70px 70px;
+  border-radius: 100%;
+}
+.information__logo-name {
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.information__content {
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.information__details {
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+ 
+}
+.information__mobile {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 70px;
+  
+
+}
+.information__mobile-qr {
+  background: #333 url("../../img/qr-code.png") no-repeat center center;
+  width: 180px;
+  height: 180px;
+  background-size: 180px 180px;
+ 
+}
+.information__mobile-flatform {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.information__mobile-appstore {
+  background: url("https://www.luxstay.com/icons/apple-store.svg") no-repeat center center;
+  width: 175px;
+  height: 54px;
+  background-size: 175px 54px;
+  cursor: pointer;
+ 
+}
+.information__mobile-googleplay {
+  background: url("https://www.luxstay.com/icons/google-play.svg") no-repeat center center;
+  width: 175px;
+  height: 54px;
+  background-size: 175px 54px;
+  cursor: pointer;
+ 
+}
+
+.information__img {
+  margin-left: 20px;
+
+}
