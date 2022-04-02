@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="grid">
+  <div id="app">
     <Header/>
     <Container/>
     <Footer/>

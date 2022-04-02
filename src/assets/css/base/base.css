@@ -22,6 +22,18 @@
     src: url('../../font/Roboto-Black.ttf');
 }
 
+:root{
+    --hover-color: #fd5f32;
+
+    --primary-color: #EE4D2D;
+    --while-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --star-gold-color: #ffc33e;
+    --header-height: 120px;
+    --navbar-height: 34px;
+}
 
 * {
   box-sizing: inherit;
@@ -31,17 +43,23 @@
 }
 
 html {
-    font-size: 62.5%;
-    line-height: 1.6rem;
-    font-family: Roboto;
-    box-sizing: border-box;
+    font-size: 62.5% !important;
+    line-height: 1.6rem !important;
+    font-family: Roboto !important;
+    box-sizing: border-box !important;
 }
 
-.row__header {
+.header-container {
     border-bottom: 1px solid #f5f5f5;
     background: #fff;
     position: sticky;
     top: 0;
     z-index: 999;
    
+}
+h3 {
+    margin: 28px 0;
+}
+p {
+    margin: 16px 0;
 }

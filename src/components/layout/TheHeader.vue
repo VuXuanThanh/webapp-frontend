@@ -1,6 +1,6 @@
 <template>
 
-<div class="row no-gutters row__header">
+<div class="header-container">
   <div class="grid wide">
     <header class="row header">
         <div class="col l-6">
@@ -32,7 +32,8 @@
         <div class="col l-6">
           <div class="header__right">
             <a href="#" class="header__right-links">Giới thiệu</a>
-            <a href="#" class="header__right-links">Sản phẩm</a>
+            <router-link to="/products" class="header__right-links">Sản phẩm</router-link>
+            <!-- <a href="#" class="header__right-links">Sản phẩm</a> -->
             <a href="#" class="header__right-links">Đăng kí</a>
             <a href="#" class="header__right-links">Đăng nhập</a>
             <a href="#" class="header__right-links header__right-cart">

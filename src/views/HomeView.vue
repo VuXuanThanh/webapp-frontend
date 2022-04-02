@@ -119,6 +119,6 @@
     methods: {},
   };
 </script>
-<style scoped>
+<style>
 @import url("../assets/css/page/home.view.css");
 </style>
