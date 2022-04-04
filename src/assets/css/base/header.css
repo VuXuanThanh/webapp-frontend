@@ -100,6 +100,37 @@
 .header__right-links:hover {
     color: #fd5f32;
 }
+
+.header-account {
+    display: flex;
+    gap: 4px;
+    font-weight: 500;
+    position: relative;
+}
+
+.header-account-options {
+    position: absolute;
+    z-index: 999999;
+    bottom: 20px;
+    top: 100%;
+    width: 100%;
+    display: none;
+}
+.header__right-links-account:hover .header-account-options {
+    display: block;
+}
+.options {
+    list-style-type: none;
+    width: 100%;
+    border: 1px solid #e5e5e5;
+}
+.options-item {
+    padding: 8px;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+
 .header__right-cart {
     margin-left: 8px;
     position: relative;

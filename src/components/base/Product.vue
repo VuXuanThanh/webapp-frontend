@@ -1,5 +1,5 @@
 <template>
-  <a class="home-product-item" href="#">
+  <router-link to="/product/111212" class="home-product-item" href="#">
     <div
       class="home-product-item__img"
       style="background-image: url(https://salt.tikicdn.com/cache/280x280/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg);"
@@ -37,7 +37,7 @@
       <span class="home-product-item__discount-percent">10%</span>
       <span class="home-product-item__discount-lable">GIẢM</span>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script>
