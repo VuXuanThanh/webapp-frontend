@@ -1,0 +1,75 @@
+.registration {
+   display: flex;
+   padding: 32px;
+   
+
+}
+.form {
+  margin: 0 auto;
+  min-width: 500px;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+ 
+  
+
+}
+.form-title {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--primary-color);
+
+}
+.form-group {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  margin-top: 30px;
+
+}
+.form-label {
+  font-weight: 500;
+
+}
+.form-control {
+  width: 100%;
+  border: 1px solid #D3D7DE;
+  height: 40px;
+  padding: 8px 20px;
+  border-radius: 8px;
+
+}
+.form-message {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  font-size: 1.3rem;
+  color: red;
+  display: none;
+
+}
+.form-button {
+  margin-top: 25px;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  height: 40px;
+  background: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+}
+
+.form-information {
+  font-size: 1.5rem;
+  margin-top: 25px;
+}
+.form-information-link {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.form-information-security {
+  margin-top: 40px;
+}

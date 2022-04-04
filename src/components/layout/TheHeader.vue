@@ -30,8 +30,9 @@
             <a href="#" class="header__right-links">Giới thiệu</a>
             <router-link to="/products" class="header__right-links">Sản phẩm</router-link>
             <!-- <a href="#" class="header__right-links">Sản phẩm</a> -->
-            <a href="#" class="header__right-links" v-if="true">Đăng kí</a>
-            <a href="#" class="header__right-links" v-if="true">Đăng nhập</a>
+            <router-link to="/registration" class="header__right-links" v-if="true">Đăng kí</router-link>
+            <router-link to="/login" class="header__right-links" v-if="true">Đăng nhập</router-link>
+            <!-- <a href="#" class="header__right-links" ></a> -->
 
             <a href="#" class="header__right-links header__right-links-account" v-if="false">
               <div class="header-account">
