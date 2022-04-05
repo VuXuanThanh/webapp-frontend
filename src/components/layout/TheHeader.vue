@@ -48,10 +48,10 @@
               </div>
             </a>
 
-            <a href="#" class="header__right-links header__right-cart">
+            <router-link to="/cart" class="header__right-links header__right-cart">
               <i class="fa-solid fa-cart-shopping header__cart-icon"></i>
               <span class="header__cart-quanlity">0</span>
-            </a>
+            </router-link>
           </div>
         </div>
       </header>
