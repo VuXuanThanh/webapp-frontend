@@ -1,0 +1,143 @@
+.cart-view {
+    font-size: 1.5rem;
+    padding: 16px;
+}
+.cart-title {
+    font-size: 2.5rem;
+    margin: 40px 0;
+
+}
+.list-products {
+    height: 40px;
+    align-items: center;
+    margin-top: 16px;
+   
+}
+.cart-checkbox {
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #333;
+}
+.cart-checkbox-selected {
+    position: relative;
+}
+.cart-checkbox-selected::after {
+    content: "";
+    position: absolute;
+    /* display: none; */
+    border-right: 2px solid  var(--hover-color);;
+    border-bottom: 2px solid  var(--hover-color);;
+    transform: rotate(45deg);
+    left: 5px;
+    width: 6px;
+    height: 12px;
+    top: 0px;
+    color: #333
+}
+.row-product-cart span {
+    font-weight: 600;
+}
+
+.row-product-cart {
+    align-items: center;
+    margin-bottom: 35px;
+}
+.cart-button {
+    display: flex;
+    height: 40px
+   
+}
+.cart-button-item {
+    border: 1px solid #e5e5e5;
+    /* padding: 0 16px; */
+    flex: 1;
+   
+}
+.cart-button-input {
+    width: 40px;
+    margin: 0;
+    flex: 2;
+    padding-left: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+.cart-product-name {
+    display: flex;
+    
+    gap: 16px;
+}
+
+.cart-money {
+    color: var(--hover-color);
+    font-weight: 600;
+}
+
+.col-center {
+    text-align: center;
+}
+.cart-deletion:hover {
+    color: var(--hover-color);
+
+
+}
+
+.row-payment {
+    margin-top: 35px;
+    height: 40px;
+    align-items: center;
+}
+.payment-text {
+    font-size: 2rem;
+
+}
+.payment-sum {
+    font-size: 2.2rem;
+    color: var(--hover-color);
+    font-weight: 700;
+}
+.payment-button {
+    border: 0px;
+    height: 40px;
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+
+}
+.payment-discount {
+    display: flex;
+    height: 40px;
+
+}
+.payment-discount-input {
+    border: 1px solid #e5e5e5;
+    padding-left: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+.payment-discount-button {
+    background-color: var(--hover-color);
+    color: #fff;
+    padding: 8px ;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+
+}
+
+.payment-remove-all {
+    border: 1px solid #e5e5e5;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+}
+::placeholder {
+    color: #C5C9D3;
+    font-size: 1.4rem;
+  }
