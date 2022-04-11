@@ -7,11 +7,24 @@
         <div class="category">
           <div class="category__heading">Danh mục</div>
           <div class="category__list">
-            <a href class="category__list-item category__item-active">Bếp điện</a>
-            <a href class="category__list-item">Nồi chiên không dầu</a>
-            <a href class="category__list-item">Nồi cơm điện</a>
-            <a href class="category__list-item">Bộ nồi chảo</a>
-            <a href class="category__list-item">Sản phẩm khác</a>
+            <!-- <span class="category__list-item category__item-active">DMSP</span> -->
+             <div
+              class="category__list-item"
+              :keyId="categoryFirst.categoryId"
+            >
+              <span :keyId="categoryFirst.categoryId" class="category-item category__item-active"
+                @click="clickCategoryItem">{{categoryFirst.categoryName}}</span>
+            </div>
+            <div
+              class="category__list-item"
+            
+              v-for="(item, index) in Categories"
+              :keyId="index"
+              :key="item.categoryId"
+            >
+              <span :keyId="item.categoryId" v-if="index>0" class="category-item "
+                 @click="clickCategoryItem">{{item.categoryName}}</span>
+            </div>
           </div>
         </div>
 
@@ -45,93 +58,20 @@
 
       <div class="col l-10">
         <div class="row">
-          <div class="col l-12">Sắp xếp theo</div>
+          <div class="col l-12" style="font-size: 1.6rem">Sắp xếp theo</div>
         </div>
         <div class="row">
-          <div class="col l-2-4">
-            <Product />
-          </div>
-          <div class="col l-2-4">
-            <Product />
-          </div>
-          <div class="col l-2-4">
-            <Product />
-          </div>
-          <div class="col l-2-4">
-            <Product />
-          </div>
-          <div class="col l-2-4">
-            <Product />
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
-          <div class="col l-2-4">
-            <Product></Product>
-          </div>
+          <Product v-for="item in Products.data" :key="item.ProductId" :product="item" />
         </div>
       </div>
     </div>
-
-    <v-pagination v-model="page" :length="20" :total-visible="7"></v-pagination>
+    <!-- {{ProductImages}} -->
+    <v-pagination v-model="page" :length="Products.totalPage" :total-visible="7"></v-pagination>
   </div>
 </template>
 
 <script>
+  import { mapActions, mapGetters, mapMutations } from "vuex";
   import TheSliderBrand from "../components/layout/TheSliderBrand.vue";
   import Product from "../components/base/Product.vue";
 
@@ -144,25 +84,107 @@
     data() {
       return {
         page: 1,
-        product: {
-          ProductId: "1000",
-          ProductName: "dien thoai",
+        posts: [],
+
+        paginationSize: {
+         
+          pageSize: 24,
+          pageIndex: 1
         },
-        products: [
-          {
-            ProductId: "1001",
-            ProductName: "dien thoai",
-          },
-          {
-            ProductId: "1002",
-            ProductName: "dien thoai",
-          },
-          {
-            ProductId: "101",
-            ProductName: "dien thoai",
-          },
-        ],
+
+        /** Parameters for pagination */
+        params: {
+          type: 1,
+          categoryId: '',
+          pageSize: 24,
+          pageIndex: 1
+        }
       };
+    },
+    computed: {
+      ...mapGetters([
+        "UserName",
+        "Age",
+        "Posts",
+        "Categories",
+        "Products",
+        "CategoryId",
+        "ProductImages",
+      ]),
+
+      categoryFirst(){
+        let result = Object.assign({}, this.Categories[0])
+        return result;
+      }
+    },
+    methods: {
+      ...mapActions([
+        "handleChangeUserName",
+        "handleChangeAge",
+        "handleGetPosts",
+        "handleGetCategories",
+        "handleGetProductsByCategory",
+        "handleGetImageByProduct",
+      ]),
+      ...mapMutations([
+        "changUserName",
+        "changeAge",
+        "getCategories",
+        "getProductsByCategory",
+        "getImageByProduct",
+      ]),
+
+      /** Load products by category */
+      getProductsByCategory(params) {
+        // let x = this.Categories;
+
+        this.handleGetProductsByCategory(params);
+      },
+      /** Events click category item */
+      clickCategoryItem(e) {
+        e.stopPropagation();
+        let me = this;
+        let element = e.target;
+        let elementSelected = me.$el.querySelectorAll(".category-item");
+        elementSelected.forEach((item) => {
+          item.classList.remove("category__item-active");
+        });
+        element.classList.add("category__item-active");
+        let categoryId = element.getAttribute("keyId");
+        console.log('categoryId', categoryId);
+        me.params.categoryId = categoryId;
+        me.getProductsByCategory(me.params);
+      },
+
+      /** Events click pagination item */
+      clickPaginationItem() {
+        let me = this;
+        let items = me.$el.querySelectorAll('.v-pagination__item');
+        items.forEach(item => {
+          item.onclick = (element)=> {
+            console.log('phan trang', element.target);
+            let pageIndex = me.$el.querySelector('.v-pagination__item--active').innerHTML;
+            me.params.pageIndex = pageIndex;
+            me.getProductsByCategory(me.params);
+          }
+        });
+      }
+    },
+    created() {
+      this.handleGetCategories();
+    },
+    mounted() {
+      let me = this;
+      let categoryId = "";
+      me.params.categoryId = categoryId;
+      me.getProductsByCategory(me.params);
+      me.handleGetImageByProduct();
+
+    },
+    updated() {
+       this.clickPaginationItem();
+      // let me = this;
+      // default active first category
     },
   };
 </script>

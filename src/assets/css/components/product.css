@@ -27,6 +27,8 @@
     background-position: center;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
+
+    /* background: url('../../img/product/iphone.jpg'); */
     
 }
 .home-product-item__name{

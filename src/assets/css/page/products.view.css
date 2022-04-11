@@ -23,10 +23,19 @@
     font-size: 1.5rem;
     margin: 10px 0;
     color: #333;
+    cursor: pointer;
     
 }
+/* .category__list-item:first-child {
+    color: var(--primary-color);
+    font-weight: 700;
+} */
 .category__list-item:hover {
     color: var(--hover-color);
+}
+.category__item-active {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .category__item-selected {
