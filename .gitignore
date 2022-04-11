@@ -24,3 +24,4 @@ pnpm-debug.log*
 *.png
 *.svg
 *.jpg
+*.jpg.webp
