@@ -63,3 +63,20 @@ h3 {
 p {
     margin: 16px 0;
 }
+.user-error {
+    display: flex;
+    font-size: 1.4rem;
+    margin: 20px 0;
+    gap: 10px;
+    border: 1px solid rgba(255,66,79,.2);
+    padding: 20px;
+    border-radius:2px;
+    background-color:#fff9fa;
+}
+.error-icon-error {
+    color: red;
+    font-size: 1.6rem;
+}
+.user-error-message {
+    color: #3b334d;
+}

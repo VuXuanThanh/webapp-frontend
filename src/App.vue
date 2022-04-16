@@ -22,6 +22,14 @@ export default {
     Header,
     Container,
     Footer
+  },
+
+  mounted() {
+    console.log('App mounted')
+  },
+
+  updated() {
+    console.log('updated app')
   }
 }
 </script>

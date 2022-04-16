@@ -27,6 +27,48 @@ export default  {
     getImageByProduct(state, images){
         // console.log('mutate tai nah', images);
         state.productsImages = images;
+    },
+
+    
+
+    registration(){
+        console.log('cap nhat len state')
+    },
+
+    login(state, response){
+        console.log('cap nhat len statem login');
+        console.log(response);
+        if(response.status==200){
+            state.userId = response.data.data.userId;
+            state.userName = response.data.data.userName;
+            state.isLoggedIn = true;
+            state.isError = false;
+        }
+        else {
+            state.userId='';
+            state.userMsg = response.data.userMsg;
+            state.devMsg = response.data.devMsg;
+            state.isError = true;
+        }
+    },
+
+    statusLogin(state, status){
+        state.isLoggedIn = status;
+    },
+
+    logout(state, response){
+        if(response.status==200){
+            state.userId = ''
+            state.userName =''
+            state.isLoggedIn = false;
+        }
+        else {
+            state.userMsg = response.data.userMsg;
+            state.devMsg = response.data.devMsg;
+            state.isError = true;
+        }
     }
+
+
     
 }

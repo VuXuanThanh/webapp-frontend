@@ -6,7 +6,7 @@
     <!-- first intro -->
     <div class="row no-gutters row__introduction">
       <div class="col l-12 introduction">
-        <h3 class="introduction__heading">Chào mừng đến với Lyoko!</h3>
+        <h3 class="introduction__heading">Chào mừng đến với Lyoko! {{reactJs}}</h3>
         <p
           class="introduction__paragraph"
         >Đặt hàng, thanh toán, trải nghiệm và nhiều hơn nữa trên Lyoko</p>
@@ -107,16 +107,37 @@
   import TheSliderProduct from '../components/layout/TheSliderProduct.vue'
   export default {
     name: "HomeView",
+    
     components: {
       TheBanner,
       TheSliderCategory,
       TheSliderProduct,
     },
     data() {
-      return {};
+      return {
+        reactJs: ''
+      };
     },
-    mounted() {},
-    methods: {},
+    created() {
+       this.fetchData()
+    },
+    mounted() {
+      console.log('mouted page home')
+    },
+    updated() {
+      console.log('updated page home')
+    },
+     watch: {
+    // call again the method if the route changes
+    '$route': 'fetchData'
+  },
+    methods: {
+      fetchData(){
+        this.$forceUpdate;
+        console.log('thay foui')
+        this.reactJs=this.$cookies.get("_user");
+      }
+    },
   };
 </script>
 <style scoped>

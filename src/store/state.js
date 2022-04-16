@@ -1,5 +1,6 @@
+import cookie from 'vue-cookies'
+
 export default {
-    userName: 'Vu Xuan Thanh',
     age: 10,
     posts: [],
 
@@ -10,5 +11,18 @@ export default {
 
     products: [],
 
+    product: {},
+
     productsImages: [],
+
+
+    userId: '',
+    userName: cookie.get('_user'),
+
+    isLoggedIn: false,
+
+    userMsg: '',
+    devMsg: '',
+    isError: false
+
 }

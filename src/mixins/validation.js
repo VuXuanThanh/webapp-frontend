@@ -1,130 +1,97 @@
-import Contrant from '../resources/config'
+
 export const validation = {
 
     methods: {
-        /**
-         * check all inputs required in form
-         * CreateBy: VXTHANH
-         * CreateDate: 13/02/2022
-         * @returns result
-         */
-        validateRequired() {
-            let result = true;
-            let inputRequired = this.$el.querySelectorAll('.input-required');
-            inputRequired.forEach((input) => {
-                let value = input.value;
-                let span = input.parentElement.querySelector('.form-message');
-                if (!value.trim()) {
-                    input.classList.add('form-control-required');
-                    span.classList.add('form-message-display');
-                    span.innerHTML = Contrant.message.waringRequired
-                    result = false;
-
-                }
-                else {
-                    input.classList.remove('form-control-required');
-                    span.classList.remove('form-message-display');
-                }
-            })
-
-            // let inputDate = this.$el.querySelector('input[type=date]');
-            // if (inputDate.value != '') {
-            //     let span = inputDate.parentElement.querySelector('.form-message');
-            //     console.log(span);
-
-            //     let q = new Date();
-            //     let m = q.getMonth() + 1;
-            //     let d = q.getDay();
-            //     let y = q.getFullYear();
-
-            //     let date = new Date(m, d, y);
-
-            //     let mydate = new Date(inputDate.value);
-            //     console.log(date);
-            //     console.log(mydate)
-
-            //     // if (date >= mydate) {
-            //     //     inputDate.classList.add('form-control-required');
-            //     //     span.classList.add('form-message-display');
-            //     //     span.innerHTML = Contrant.message.waringDate
-            //     //     console.log('greate');
-            //     //     result = false;
-            //     // }
-            //     // else {
-            //     //     inputDate.classList.remove('form-control-required');
-            //     //     span.classList.remove('form-message-display');
-            //     //     console.log('samll');
-            //     //     return true;
-            //     // }
-
-            // }
-
-            return result;
-        },
-        /**
-         * @returns validate all inputs which are emails input 
-         * CreateBy: VXTHANH
-         * CreateDate: 13/02/2022
-         * @returns result
-         */
-        validateEmail() {
-            let result = true;
-            let inputEmail = this.$el.querySelectorAll('.form-control-email');
-            var mailformat = /^\w+([/.-]?\w+)*@\w+([/.-]?\w+)*(\.\w{2,3})+$/;
-            inputEmail.forEach(input => {
-                let span = input.parentElement.querySelector('.form-message');
-                if (input.value.match(mailformat)) {
-                    input.classList.remove('form-control-required');
-                    span.classList.remove('form-message-display');
-
-                }
-                else {
-                    input.classList.add('form-control-required');
-                    span.classList.add('form-message-display');
-                    span.innerHTML = Contrant.message.waringEmail;
-                    result = false;
-                    return result;
-
-                }
-            })
-            return result;
-        },
-        validateGeneral(e) {
-            var mailformat = /^\w+([/.-]?\w+)*@\w+([/.-]?\w+)*(\.\w{2,3})+$/;
-            let input = e.target;
+       
+        validateInput(e){
+            // console.log(e.tagName);
+            let isValid = true;
+            let input = (e.tagName==='INPUT') ? e : e.target;
+            let parent = input.parentElement;
+            let message = parent.querySelector('.form-message');
             let name = input.getAttribute('name');
-            let value = input.value;
-            let span = input.parentElement.querySelector('.form-message');
-            if (name === 'CustomerName') {
-                if (!value.trim()) {
-                    input.classList.add('form-control-required');
-                    span.classList.add('form-message-display');
-                    span.innerHTML = Contrant.message.waringRequired;
-                    return false;
+            // console.log(name);
+            if(name==='Email'){
+                let mailformat = /^\w+([/.-]?\w+)*@\w+([/.-]?\w+)*(\.\w{2,3})+$/;
+                if (!input.value.match(mailformat)) {
+                    console.error('ko hop le');
+                    this.showErrorMessage(message,'Vui lòng nhập đúng định dạng email');
+                    isValid = false;
+                 }
+                 else {
+                    message.classList.remove('form-message-display');
+                   
+                 }
+            }
+            else if(name==='PhoneNumber'){
+                let phoneNumberFormat = /(84|0[3|5|7|8|9])+([0-9]{8})\b/
+                if(!input.value.match(phoneNumberFormat)){
+                  this.showErrorMessage(message,'Số điện thoại không hợp lệ');
+                    isValid = false;
                 }
                 else {
-                    input.classList.remove('form-control-required');
-                    span.classList.remove('form-message-display');
-                    return true;
+                    message.classList.remove('form-message-display');
                 }
             }
-            if (name === 'Email') {
-                if (input.value.match(mailformat)) {
-                    input.classList.remove('form-control-required');
-                    span.classList.remove('form-message-display');
-                    return true;
-
+            else if(name==='Password') {   
+                if(input.value.length<8) {
+                    this.showErrorMessage(message,'Mật khẩu cần tối thiểu 8 kí tự');
+                    isValid = false;
                 }
                 else {
-                    input.classList.add('form-control-required');
-                    span.classList.add('form-message-display');
-                    span.innerHTML = Contrant.message.waringEmail;
-                    return false
-
-
+                    message.classList.remove('form-message-display');
                 }
             }
-        }
+            else if(name==='PasswordConfirm'){
+                let form = parent.parentElement;
+                console.log(form)
+                let password = form.querySelector('input[name="Password"]');
+              
+                if(password.value!='' && input.value!==password.value){
+                    this.showErrorMessage(message,'Mật khẩu nhập lại không khớp');
+                    isValid = false;
+                }
+                else {
+                    message.classList.remove('form-message-display');
+                }
+            }
+            else if(name==='Required'){
+                if(input.value==''){
+                    this.showErrorMessage(message,'Vui lòng nhập trường này');
+                    isValid = false;
+                }
+                else {
+                    message.classList.remove('form-message-display');
+                }
+            }
+            else {
+                isValid = true;
+            }
+            return isValid;
+        },
+
+        showErrorMessage(element, message) {
+            element.innerHTML =message;
+            element.classList.add('form-message-display');
+        },
+
+        validate(){
+           let me = this;
+           let checks=[];
+           let form = document.querySelector('.form');
+        //    console.log(form);
+           let inputs = form.querySelectorAll('.form-control');
+        //    console.log(inputs);
+           inputs.forEach((input) => {
+               let x = me.validateInput(input);
+               checks.push(x);
+           })
+           var res = checks.some(check=> !check );
+           return !res;
+        },
+
+
+       
     }
 
 }

@@ -73,5 +73,43 @@ export default {
             .catch(err => {
                 console.log(err);
             })
+    },
+
+    // registration
+    handleRegistration(context){
+        console.log(context);
+        console.log('dang goi API dang ki')
+    },
+
+    // login
+    handleLogin(context, authenticateRequest) {
+       
+        console.log('goi login');
+        axios.post('https://localhost:44321/api/v1/Users/login', authenticateRequest, { withCredentials: true })
+            .then(res=> {
+                context.commit('login', res);
+            })
+            .catch(err=> {
+                console.log(err.response);
+                context.commit('login', err.response);
+            })
+    },
+
+    handleStatusLogin(context, status){
+        context.commit('statusLogin', status);
+    },
+
+    // handle logout
+    handleLogout(context){
+        console.log('goi logout', context);
+        axios.get('https://localhost:44321/api/v1/Users/logout', { withCredentials: true })
+            .then(res=> {
+                console.log(res);
+                context.commit('logout', res);
+            })
+            .catch(err=> {
+                console.log(err.response);
+                context.commit('logout', err.response);
+            })
     }
 }

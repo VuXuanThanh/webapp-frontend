@@ -1,5 +1,5 @@
 export default  {
-    UserName: state=>  "UserName: "+state.userName,
+    // UserName: state=>  "UserName: "+state.userName,
 
     Age: state =>  state.age + "year old",
 
@@ -12,5 +12,17 @@ export default  {
     Products: state=> state.products,
 
     ProductImages: state=> state.productsImages,
+
+    UserId: state=> state.userId,
+
+    UserName: state=> state.userName,
+
+    IsLoggedIn: state=> state.isLoggedIn,
+
+    UserMsg:  state => state.userMsg,
+
+    DevMsg: state => state.devMsg,
+
+    IsError: state => state.isError,
     
 }
