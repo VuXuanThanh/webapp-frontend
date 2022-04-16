@@ -11,6 +11,8 @@ export default  {
 
     Products: state=> state.products,
 
+    Product: state=> state.product,
+
     ProductImages: state=> state.productsImages,
 
     UserId: state=> state.userId,

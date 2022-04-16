@@ -63,6 +63,17 @@ export default {
 
     },
 
+    handleGetProductById(context, productId){
+        axios.get(`https://localhost:44321/api/v1/Products/${productId}`)
+            .then(res=> {
+                console.log(res)
+                context.commit('getProductById', res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
+
     // products images
     handleGetImageByProduct(context) {
         axios.get(`https://localhost:44321/api/v1/ProductImages`)

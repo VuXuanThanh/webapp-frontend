@@ -29,6 +29,10 @@ export default  {
         state.productsImages = images;
     },
 
+    getProductById(state, product){
+        state.product = product;
+    },
+
     
 
     registration(){

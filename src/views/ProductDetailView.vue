@@ -10,7 +10,7 @@
             <a href class="breadcrumbs__item-link">Sản phẩm</a>
           </li>/
           <li class="breadcrumbs__item">
-            <a href class="breadcrumbs__item-link">Tên sản phẩm</a>
+            <a href class="breadcrumbs__item-link">{{Product.productName}}</a>
           </li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
 
       <div class="col l-7 product-detail">
         <div class="product-detail-information">
-          <span class="product-name">Bếp ga âm 80cm UltimateTaste 700 với 2 vùng nấu</span>
+          <span class="product-name">{{Product.productName}}</span>
           <div class="product-additional">
             <span class="product-code">EHG8251BC</span>
             <div class="home-product-item__rating product-rating">
@@ -60,14 +60,14 @@
               <span class="product-sold-text">đã bán</span>
             </span>
 
-            <span class="products-status">Còn hàng</span>
+            <span class="products-status">{{getStatusProduct}}</span>
           </div>
 
           <div class="product-price">
-            <span class="product-price-orgin">6.390.000 ₫</span>
-            <span class="product-price-sell">4.890.000 ₫</span>
+            <span class="product-price-orgin">{{formatPrice(Product.priceOrgin)}}</span>
+            <span class="product-price-sell">{{formatPrice(Product.priceDeal)}}</span>
             <span class="product-price-discount">
-              <span class="product-discount-number">25%</span>
+              <span class="product-discount-number">{{getDiscountPercent}}%</span>
               <span class="product-discount-text">giảm</span>
             </span>
           </div>
@@ -116,7 +116,7 @@
           <div class="product-description-item">
             <span class="product-description-key">Danh mục:</span>
             <span class="product-description-value">
-              <router-link to="product">Bếp điện từ</router-link>
+              <router-link to="product">{{Product.productName}}</router-link>
             </span>
           </div>
 
@@ -127,32 +127,32 @@
 
           <div class="product-description-item">
             <span class="product-description-key">Chất liệu:</span>
-            <span class="product-description-value">Kính</span>
+            <span class="product-description-value">{{Product.material}}</span>
           </div>
 
           <div class="product-description-item">
             <span class="product-description-key">Phụ kiện:</span>
-            <span class="product-description-value">bộ dao cắt thái 3 chiếc</span>
+            <span class="product-description-value">{{Product.accessory}}</span>
           </div>
 
           <div class="product-description-item">
             <span class="product-description-key">Trọng lượng:</span>
-            <span class="product-description-value">1.2kg</span>
+            <span class="product-description-value">{{Product.weights}}gram</span>
           </div>
 
           <div class="product-description-item">
             <span class="product-description-key">Kích thước:</span>
-            <span class="product-description-value">800 x 480 x 80</span>
+            <span class="product-description-value">{{Product.dimension}}</span>
           </div>
 
           <div class="product-description-item">
             <span class="product-description-key">Công suất:</span>
-            <span class="product-description-value">5000W</span>
+            <span class="product-description-value">{{Product.powers}}</span>
           </div>
 
           <div class="product-description-item">
             <span class="product-description-key">Xuất xứ:</span>
-            <span class="product-description-value">Việt Nam</span>
+            <span class="product-description-value">{{Product.orgin}}</span>
           </div>
         </div>
       </div>
@@ -186,16 +186,51 @@
         </p>
       </div>
     </div>
+
+
+    <div class="recommend">
+      San pham goi y
+    </div>
   </div>
 </template>
 
 <script>
+  import { mapActions, mapGetters, mapMutations } from "vuex";
   export default {
     data() {
       return {
         positionX: 0,
       };
     },
+     computed: {
+      ...mapGetters(["Product"]),
+
+      getStatusProduct(){
+        let status = (this.Product.statusProduct) ? 'Còn hàng' : 'Hết hàng';
+        return status;
+      },
+
+      getDiscountPercent(){
+        return Math.round((1-this.Product.priceDeal/this.Product.priceOrgin)*100);
+      }
+
+      
+    },
+    
+     methods: {
+      ...mapActions(["handleGetProductById"]),
+      ...mapMutations(["getProductById"]),
+
+      formatPrice(price) {
+        return price.toLocaleString('vi', {style : 'currency', currency : 'VND'});
+      }
+     },
+
+     created() {
+       console.log('created product detail', this.$route.params.productId);
+       this.handleGetProductById(this.$route.params.productId);
+     }
+
   };
 </script>
 
