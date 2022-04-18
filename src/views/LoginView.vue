@@ -44,11 +44,13 @@
         <router-link to="/" class="form-information-link">Quên mật khẩu</router-link>
       </div>
 
-
-    
+       <div class="form-information">
+        Bạn chưa có tài khoản?
+        <router-link to="/registration" class="form-information-link">Đăng kí ngay</router-link>
+      </div>
 
       <p class="note">{{UserId}}</p>
-    
+
       <!-- {{Categories}} -->
     </div>
   </div>
@@ -69,7 +71,14 @@
       };
     },
     computed: {
-      ...mapGetters(["UserId", "UserName", "Age", "IsError", "UserMsg", "IsLoggedIn"]),
+      ...mapGetters([
+        "UserId",
+        "UserName",
+        "Age",
+        "IsError",
+        "UserMsg",
+        "IsLoggedIn",
+      ]),
 
       categoryFirst() {
         let result = Object.assign({}, this.Categories[0]);
@@ -82,8 +91,8 @@
 
       loginUser() {
         let me = this;
-         let x = me.$el;
-         console.log(x);
+        let x = me.$el;
+        console.log(x);
         console.log("validate du lieu truoc khi gui");
         console.log(me.Age);
         let isValid = me.validate();
@@ -92,40 +101,42 @@
           console.log(`state ma khach hanf ${me.UserId} hihi`);
           // let userIdCookie = me.$cookies.get("_userId")
 
-              // me.$router.push({ path: '/' });
-        } 
-        console.log('vu xuan thanh==================')
-        let y = me.$el.querySelector('.note');
-          
-            console.log(y.innerHTML);
+          // me.$router.push({ path: '/' });
+        }
+        console.log("vu xuan thanh==================");
+        let y = me.$el.querySelector(".note");
+
+        console.log(y.innerHTML);
         // console.log('get coooki name', this.$cookies.get('_user'));
       },
 
-      getCookie123(){
+      getCookie123() {
         console.log(this.$cookies.get("_userId"));
       },
 
-      getInforUser(){
+      getInforUser() {
         return this.$cookies.get("_userId");
-      }
+      },
     },
     created() {
+      window.scrollTo(0, 0);
       let me = this;
+      
       if (me.$cookies.get("_userId")) {
         me.$router.go(-1);
       }
     },
     mounted() {
-      console.log('login mouted');
+      window.scrollTo(0, 0);
+      console.log("login mouted");
     },
     updated() {
-     console.log('login updated');
-      let y = this.$cookies.get("_userId")
-      if(y!=null) {
-         this.$router.go(-1);
+      console.log("login updated");
+      let y = this.$cookies.get("_userId");
+      if (y != null) {
+        this.$router.go(-1);
       }
-
-    }
+    },
   };
 </script>
 

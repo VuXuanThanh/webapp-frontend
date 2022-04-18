@@ -4,7 +4,17 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import VueCookies from 'vue-cookies';
+
+
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
 Vue.use(VueCookies);
+Vue.use(Toast, {
+  transition: "Vue-Toastification__bounce",
+  maxToasts: 20,
+  newestOnTop: true
+});
 
 Vue.config.productionTip = false
 

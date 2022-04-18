@@ -1,3 +1,4 @@
+
 export default  {
     changUserName(state, newUserName) {
         console.log(state);
@@ -71,6 +72,51 @@ export default  {
             state.devMsg = response.data.devMsg;
             state.isError = true;
         }
+    },
+
+    /** Cart */
+
+     // get items in cart
+     getCartByUserId(state, response) {
+        state.cartItems = response.data
+    },
+
+    addItemsToCart(state, response) {
+        if(response.status==200){
+
+            state.responseCart = response.data.data;
+        
+        }
+        else {
+            state.responseCart = response.data.userMsg;
+        }
+
+        state.messageCart = true;
+    },
+
+    updateMessageCart(state, isShow){
+        state.messageCart = isShow;
+    },
+
+
+    getSumRecordsCart(state, result){
+        if(result.status==200){
+
+            state.sumRecordsCart = result.data
+        
+        }
+        else {
+            state.sumRecordsCart = result
+        }
+       
+    },
+
+    clearSumRecords(state){
+        state.sumRecordsCart = 0;
+    },
+
+    updateSumRecords(state){
+        state.sumRecordsCart +=1;
     }
 
 

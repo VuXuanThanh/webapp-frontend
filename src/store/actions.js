@@ -38,9 +38,6 @@ export default {
 
     // products by category
     handleGetProductsByCategory(context, params) {
-
-        //    var category ='';
-        // console.log('params', params.pageSize);
         axios.get('https://localhost:44321/api/v1/Categories')
             .then(res => {
                 console.log(res);
@@ -122,5 +119,58 @@ export default {
                 console.log(err.response);
                 context.commit('logout', err.response);
             })
+    },
+
+    // get items in cart
+    handleGetCartByUserId(context, userId){
+        console.log(context);
+        axios.get(`https://localhost:44321/api/v1/CartItems/${userId}`)
+        .then(res=> {
+            console.log(res.data);
+            context.commit('getCartByUserId', res);
+        })
+        .catch(err=> {
+            console.log(err);
+        })
+    },
+
+    // handle add items to cart
+    handleAddItemsToCart(context, item){
+        axios.post('https://localhost:44321/api/v1/CartItems', item)
+            .then(res=> {
+                console.log(res);
+                context.commit('addItemsToCart', res);
+            })
+            .catch(err => {
+                console.log(err);
+                context.commit('addItemsToCart', err.response);
+            })
+    },
+
+    // auto show/hide dialog
+    handleUpdateMessageCart(context, isShow){
+        context.commit('updateMessageCart', isShow)
+    },
+
+    // get sum records in cartItem
+    handleGetSumRecordsCart(context, userId ){
+        axios.get(`https://localhost:44321/api/v1/CartItems/${userId}/records`)
+        .then(res=> {
+            console.log(res);
+            context.commit('getSumRecordsCart', res);
+        })
+        .catch(err=> {
+            console.log(err.response);
+            // context.commit('logout', err.response);
+        })
+    },
+
+    // clearSumRecords
+    handleClearSumRecords(context){
+        context.commit('clearSumRecords');
+    },
+
+    handleUpdateSumRecords(context){
+        context.commit('updateSumRecords');
     }
 }

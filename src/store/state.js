@@ -4,13 +4,12 @@ export default {
     age: 10,
     posts: [],
 
-    // categies
+    /** category module */
     categories: [],
-
     categoryId: '',
 
+    /** product */
     products: [],
-
     product: {
         productId: '',
         productName: "",
@@ -30,17 +29,30 @@ export default {
         priceDeal: 0
 
     },
-
     productsImages: [],
 
-
+    /** authentication */
     userId: '',
     userName: cookie.get('_user'),
-
     isLoggedIn: false,
+    isError: false,
 
+    /** response result */
     userMsg: '',
     devMsg: '',
-    isError: false
+
+    
+    /** cart module */
+    cartItems: [],
+    cartItem: {
+        usersId: '',
+        productId: '',
+        price : 0,
+        quanlity: 0
+    },
+    responseCart: "",
+    messageCart: false,
+    sumRecordsCart: 0
+
 
 }

@@ -50,7 +50,7 @@
 
             <router-link to="/cart" class="header__right-links header__right-cart">
               <i class="fa-solid fa-cart-shopping header__cart-icon"></i>
-              <span class="header__cart-quanlity">0</span>
+              <span class="header__cart-quanlity">{{SumRecordsCart}}</span>
             </router-link>
           </div>
         </div>
@@ -63,6 +63,7 @@
   import { mapActions, mapGetters, mapMutations } from "vuex";
 
   export default {
+    name: 'TheHeader',
     created() {
       console.log("create the header");
     },
@@ -70,9 +71,11 @@
       let me = this;
       console.log(`mounted of header ${me.$cookies.get("_user")}`);
       me.name = me.$cookies.get("_user");
+    
       if (me.$cookies.get("_userId")) {
         console.log("Da dang nhap ");
         me.handleStatusLogin(true);
+        me.handleGetSumRecordsCart(me.$cookies.get("_userId"));
       } else {
         console.log("chua dang nhap");
       }
@@ -84,8 +87,13 @@
       console.log(this.name);
       console.log(`is login ${me.IsLoggedIn}`);
       if (!me.IsLoggedIn) {
-        this.$cookies.remove("_user");
-        this.$cookies.remove("_userId");
+        me.$cookies.remove("_user");
+        me.$cookies.remove("_userId");
+        me.handleClearSumRecords();
+      }
+      else { 
+        me.handleStatusLogin(true);
+        me.handleGetSumRecordsCart(me.$cookies.get("_userId"));
       }
       // this.$forceUpdate()
     },
@@ -96,19 +104,21 @@
       };
     },
     computed: {
-      ...mapGetters(["UserId", "UserName", "Age", "IsLoggedIn"]),
+      ...mapGetters(["UserId", "UserName", "Age", "IsLoggedIn", "SumRecordsCart"]),
       getName() {
         return this.$cookies.get("_user");
       },
     },
     methods: {
-      ...mapActions(["handleStatusLogin", "handleLogout"]),
+      ...mapActions(["handleStatusLogin", "handleLogout", 
+      'handleGetSumRecordsCart', 'handleClearSumRecords', 'handleClearSumRecords']),
       ...mapMutations(["statusLogin"]),
       getUserName() {
         return this.$cookies.get("_user");
       },
       confirmLogout() {
         this.handleLogout();
+        this.$router.push({path: '/'});
         console.log("sau khi dang xuat", this.UserId);
         // this.$cookies.remove("_user");
         // this.$cookies.remove("_userId");

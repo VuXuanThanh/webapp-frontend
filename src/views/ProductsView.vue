@@ -174,6 +174,7 @@
       this.handleGetCategories();
     },
     mounted() {
+      window.scrollTo(0,0);
       let me = this;
       let categoryId = "";
       me.params.categoryId = categoryId;

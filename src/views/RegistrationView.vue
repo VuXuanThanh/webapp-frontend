@@ -93,6 +93,13 @@ export default {
             // this.handleRegistration();
         }
     },
+
+    created() {
+        window.scrollTo(0,0);
+
+    },
+    mouted() {
+    }
 }
 </script>
 

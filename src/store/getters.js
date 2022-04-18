@@ -26,5 +26,15 @@ export default  {
     DevMsg: state => state.devMsg,
 
     IsError: state => state.isError,
+
+    CartItems: state => state.cartItems,
+
+    CartItem: state => state.cartItem,
     
+    ResponseCart: state=> state.responseCart,
+
+    MessageCart: state=> state.messageCart,
+
+    SumRecordsCart: state=> state.sumRecordsCart
+
 }

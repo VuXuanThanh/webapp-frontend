@@ -119,24 +119,14 @@
       };
     },
     created() {
-       this.fetchData()
+       
     },
     mounted() {
-      console.log('mouted page home')
+      window.scrollTo(0,0);
     },
     updated() {
-      console.log('updated page home')
     },
-     watch: {
-    // call again the method if the route changes
-    '$route': 'fetchData'
-  },
     methods: {
-      fetchData(){
-        this.$forceUpdate;
-        console.log('thay foui')
-        this.reactJs=this.$cookies.get("_user");
-      }
     },
   };
 </script>

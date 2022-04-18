@@ -81,7 +81,7 @@
           <div class="product-button">
             <button class="product-cart-button">
               <i class="fa-solid fa-cart-shopping product-cart-icon"></i>
-              <span class="product-cart-text">Thêm hàng vào giỏ</span>
+              <span class="product-cart-text" @click="addToCart">Thêm hàng vào giỏ</span>
             </button>
 
             <button class="product-order-button">
@@ -164,73 +164,120 @@
         <p class="product-description-detail">
           "- Nồi lẩu điện mini đa năng có tay cầm được nhập khẩu với chất lượng cao cấp an toàn tuyệt đối cho sức khỏe người sử dụng. Với công nghệ đa năng cùng những tính năng thông minh, tiện ích bắt kịp xu thế thời buổi hiện đại, nồi điện đa dụng cao cấp chắc chắn có được sự hài lòng từ những khách hàng khó tính.
           Đặc điểm nổi bật của nồi nấu lẩu mini:
-          - Công suất mạnh: Nấu ăn nhanh chóng rất tiện lợi cho việc đun nấu
-          - Chế độ kiểm soát nhiệt độ thông minh: Nếu nhiệt độ quá cao hoặc mực nước trong nồi quá ít thì sẽ kích hoạt chế độ tự động tắt nguồn, tránh được rủi ro ngoài ý muốn cũng như đảm bảo được tuổi thọ của nồi.
-          - Thiết kế an toàn, chất liệu cao cấp: Chịu được nhiệt độ cao, khung bằng thép inox không gỉ, vỏ cách nhiệt 3 lớp chống bỏng.
-          - Đáy nồi bền bỉ: Được thiết kế bằng chất liệu cao cấp hấp thụ nhiệt nhanh chóng.
-          - Lòng nồi vân đá chống dính
-          - Ca nấu mì giúp bạn nhanh chóng có được những món ăn ưa thích như: mỳ phở ăn liền, lẩu, các món kho và luộc, nấu cháo, hâm nóng thức ăn, đun nước…
-          - Giúp bạn có thể tăng giảm nhiệt độ theo mong muốn khi đun nấu.
-          - Tay cầm chống nóng, chống cháy, phủ sơn tĩnh điện, bề mặt sáng bóng, vệ sinh dễ dàng, nắp kính cường lực chịu nhiệt cao.
-          - Nồi nấu mini đa năng siêu tốc giúp thực hiện công việc nấu nướng một cách nhanh chóng &amp; hiệu quả, tiết kiệm thời gian đến mức tối đa.
-          - Chất liệu inox giúp bề mặt luôn sáng đẹp, chống bám cặn, dễ dàng vệ sinh.
-          - Đường kính nồi: 18cm
-          ✔️ Home Life Store:
+          <br />- Công suất mạnh: Nấu ăn nhanh chóng rất tiện lợi cho việc đun nấu
+          <br />- Chế độ kiểm soát nhiệt độ thông minh: Nếu nhiệt độ quá cao hoặc mực nước trong nồi quá ít thì sẽ kích hoạt chế độ tự động tắt nguồn, tránh được rủi ro ngoài ý muốn cũng như đảm bảo được tuổi thọ của nồi.
+          <br />- Thiết kế an toàn, chất liệu cao cấp: Chịu được nhiệt độ cao, khung bằng thép inox không gỉ, vỏ cách nhiệt 3 lớp chống bỏng.
+          <br />- Đáy nồi bền bỉ: Được thiết kế bằng chất liệu cao cấp hấp thụ nhiệt nhanh chóng.
+          <br />- Lòng nồi vân đá chống dính
+          <br />- Ca nấu mì giúp bạn nhanh chóng có được những món ăn ưa thích như: mỳ phở ăn liền, lẩu, các món kho và luộc, nấu cháo, hâm nóng thức ăn, đun nước…
+          <br />- Giúp bạn có thể tăng giảm nhiệt độ theo mong muốn khi đun nấu.
+          <br />- Tay cầm chống nóng, chống cháy, phủ sơn tĩnh điện, bề mặt sáng bóng, vệ sinh dễ dàng, nắp kính cường lực chịu nhiệt cao.
+          <br />- Nồi nấu mini đa năng siêu tốc giúp thực hiện công việc nấu nướng một cách nhanh chóng &amp; hiệu quả, tiết kiệm thời gian đến mức tối đa.
+          <br />- Chất liệu inox giúp bề mặt luôn sáng đẹp, chống bám cặn, dễ dàng vệ sinh.
+          <br />- Đường kính nồi: 18cm
+          <br />✔️ Home Life Store:
           🤗 Chất lượng sản phẩm đến tay Khách hàng luôn luôn tốt nhất
-          🤗 Hàng hóa được kiểm tra kỹ đến từng centimet
-          🤗 Sản phẩm shop tự thiết kế, tự chụp ảnh, KH có thể pm xem ảnh
-          🤗 Hỗ trợ sau mua. Nếu có vấn đề về sản phẩm, xin đừng ngại liên hê với HOMELIFE: 0989550417
-          🛑🛑🛑 VUI LÒNG QUAY VIDEO QUÁ TRÌNH MỞ HÀNG ĐỂ SHOP CÓ THỂ HỖ TRỢ BẠN TỐT NHẤT KHI HÀNG HÓA CÓ VẤN ĐỀ VỀ VẬN CHUYỂN
-          Việc này có thể gây 1 chút bất tiện cho Quý khách, tuy nhiên, việc quay clip lại sẽ giúp ích cho bạn rất nhiều khi hang hóa bị vỡ, bể trong quá trình vận chuyển.
-          #noi #noilau #noilaumini #noilaudanang #giahap #dogiadung #nhabep #nauan #noilaukemgiahap #chatluong #antoan #canaumi #noilaukemgiahap"
+          <br />🤗 Hàng hóa được kiểm tra kỹ đến từng centimet
+          <br />🤗 Sản phẩm shop tự thiết kế, tự chụp ảnh, KH có thể pm xem ảnh
+          <br />🤗 Hỗ trợ sau mua. Nếu có vấn đề về sản phẩm, xin đừng ngại liên hê với HOMELIFE: 0989550417
+          <br />🛑🛑🛑 VUI LÒNG QUAY VIDEO QUÁ TRÌNH MỞ HÀNG ĐỂ SHOP CÓ THỂ HỖ TRỢ BẠN TỐT NHẤT KHI HÀNG HÓA CÓ VẤN ĐỀ VỀ VẬN CHUYỂN
+          <br />Việc này có thể gây 1 chút bất tiện cho Quý khách, tuy nhiên, việc quay clip lại sẽ giúp ích cho bạn rất nhiều khi hang hóa bị vỡ, bể trong quá trình vận chuyển.
+          <br />#noi #noilau #noilaumini #noilaudanang #giahap #dogiadung #nhabep #nauan #noilaukemgiahap #chatluong #antoan #canaumi #noilaukemgiahap"
         </p>
       </div>
     </div>
 
+    <Dialog v-if="MessageCart" :message="ResponseCart" :status="MessageCart"/>
 
-    <div class="recommend">
-      San pham goi y
-    </div>
+    <div class="recommend">San pham goi y</div>
+    
   </div>
 </template>
 
 <script>
   import { mapActions, mapGetters, mapMutations } from "vuex";
+  import Dialog from '../components/base/Dialog.vue'
   export default {
     data() {
       return {
         positionX: 0,
+
+        item: {
+          usersId: "",
+          productId: "",
+          price: 0,
+          quanlity: 0,
+        },
+
+       
       };
     },
-     computed: {
-      ...mapGetters(["Product"]),
+    components: {
+      Dialog
+    },
+    computed: {
+      ...mapGetters(["Product", "CartItem", "MessageCart", "ResponseCart"]),
 
-      getStatusProduct(){
-        let status = (this.Product.statusProduct) ? 'Còn hàng' : 'Hết hàng';
+      getStatusProduct() {
+        let status = this.Product.statusProduct ? "Còn hàng" : "Hết hàng";
         return status;
       },
 
-      getDiscountPercent(){
-        return Math.round((1-this.Product.priceDeal/this.Product.priceOrgin)*100);
-      }
-
       
+      getDiscountPercent() {
+        return Math.round(
+          (1 - this.Product.priceDeal / this.Product.priceOrgin) * 100
+        );
+      },
     },
-    
-     methods: {
-      ...mapActions(["handleGetProductById"]),
-      ...mapMutations(["getProductById"]),
+    methods: {
+      ...mapActions(["handleGetProductById", "handleAddItemsToCart",
+       "handleUpdateMessageCart", 'handleUpdateSumRecords', 'handleGetSumRecordsCart']),
+      ...mapMutations(["getProductById", "addItemsToCart"]),
 
       formatPrice(price) {
-        return price.toLocaleString('vi', {style : 'currency', currency : 'VND'});
-      }
-     },
+        return price.toLocaleString("vi", { style: "currency", currency: "VND" });
+      },
 
-     created() {
-       console.log('created product detail', this.$route.params.productId);
-       this.handleGetProductById(this.$route.params.productId);
-     }
+      
 
+      addToCart() {
+        let me = this;
+        let userId = me.$cookies.get('_userId');
+        if(!userId){
+          me.$router.push({path: '/login'})
+        }
+        else {
+          console.log('goi API them hang vao gio');
+          let productId = me.Product.productId;
+          let priceDeal = me.Product.priceDeal;
+          me.handleAddItemsToCart({
+            usersId: userId,
+            productId: productId,
+            price: priceDeal,
+            quanlity: 1
+          })
+          // me.$router.push({path: '/cart'})
+        }
+      },
+    },
+
+    created() {
+      window.scrollTo(0, 0);
+      console.log("created product detail", this.$route.params.productId);
+      this.handleGetProductById(this.$route.params.productId);
+    },
+    mounted() {
+      console.log("updated page home");
+    },
+
+    updated() {
+      let me = this;
+      console.log('product detail updated');
+      console.log('gia tri cua isshow dialog', this.MessageCart)
+      setTimeout(() => ( me.handleUpdateMessageCart(false)), 4000);
+      me.handleGetSumRecordsCart(me.$cookies.get("_userId"));
+    }
   };
 </script>
 
