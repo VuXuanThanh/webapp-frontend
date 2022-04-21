@@ -122,9 +122,10 @@ export default {
     },
 
     // get items in cart
-    handleGetCartByUserId(context, userId){
-        console.log(context);
-        axios.get(`https://localhost:44321/api/v1/CartItems/${userId}`)
+    handleGetCartByUserId(context, param){
+        let userId = param.userId;
+        let order=param.order;
+        axios.get(`https://localhost:44321/api/v1/CartItems/${userId}?order=${order}`, { withCredentials: true })
         .then(res=> {
             console.log(res.data);
             context.commit('getCartByUserId', res);

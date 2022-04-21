@@ -1,0 +1,182 @@
+@import url('./icon.css');
+.form-col {
+    position: relative;
+    margin: 16px 0;
+
+}
+.form-group {
+
+}
+.form-row {
+    
+   
+
+}
+.form-title {
+    
+    font-size: 15px;
+    display: flex;
+    margin: 16px 0;
+}
+.form-label {
+    color: #1F2229;
+    
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.form-label-mark::after {
+    content: "*";
+    color: red;
+    margin-left: 3px;
+    font-weight: 600;
+  }
+.form-control {
+    border: 1px solid #D3D7DE;
+    border-radius: 4px;
+    height: 32px;
+    font-size: 13px;
+    color:#1F2229;
+    
+    width: 100%;
+    padding-left: 16px;
+    outline: none;
+    
+
+}
+.form-control:focus {
+    border: 1px solid #2B4EEE;
+}
+.form-control-required {
+    border: 1px solid red;
+}
+.form-message {
+    display: flex;
+    color: red;
+    margin-top: 4px;
+    display: none;
+}
+.form-message-display {
+    display: flex;
+}
+.form-dropdown {
+    flex: 1;
+}
+.form-dropdown::placeholder {
+    font-size: 13px;
+    
+}
+
+
+.dropdown {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    cursor: pointer;
+
+
+}
+.dropdown input {
+    cursor: pointer;
+    
+}
+.dropdown-icon-arrow {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0000 url('../../img/icon_collection.svg') no-repeat -48px -31px;
+
+
+}
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    min-width: 100%;
+    box-shadow: 0 2px 6px #00000052;
+    background: #ffffff;
+    z-index: 20;
+    display: none;
+
+}
+.dropdown-list-display {
+    display: block;
+}
+.dropdown-bar {
+    display: flex;
+    height: 32px;
+    justify-content: space-between;
+    position: relative;
+}
+.dropdown-input {
+    flex: 1;
+    border: 0;
+    padding-left: 16px;
+    
+   
+}
+.dropdown-input:focus {
+    outline: none;
+    
+}
+.dropdown-list-item {
+    border-top: 1px solid #d3d7de;
+    height: 200px;
+    overflow: auto;
+
+}
+.dropdown-list-item::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+.dropdown-list-item::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .dropdown-list-item::-webkit-scrollbar-thumb {
+    background: #C5C9D3;
+  }
+  
+  /* Handle on hover */
+  .dropdown-list-item::-webkit-scrollbar-thumb:hover {
+    background:#7C869C;
+  }
+
+.dropdown-list-item ul li {
+    height: 32px;
+    padding: 6px 32px 6px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.dropdown-list-item ul li:hover{
+    background-color:  #d3d7de;
+}
+.dropdown-list-item ul li div {
+    display: none;
+    background: #0000 url('../../img/icon_collection.svg') no-repeat  -336px -144px;
+
+
+}
+ .dropdown-bar-search {
+     display: none;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    transform: translateY(-50%);
+    right: 0;
+    margin-right: 8px;
+    background: #0000 url('../../img/icon_collection.svg') no-repeat -32px 0;
+
+ }
+
+ .col-right {
+     margin-left: 32px;
+ }

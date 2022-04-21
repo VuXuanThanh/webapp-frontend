@@ -1,3 +1,9 @@
 .order-quanlity {
     margin: 0 auto;
 }
+
+.order-note {
+    display: flex;
+    align-items: center;
+    gap: 42px  ;
+}
