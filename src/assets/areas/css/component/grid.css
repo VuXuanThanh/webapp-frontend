@@ -1,0 +1,66 @@
+/* Grid */
+.grid {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.grid .grid-header {
+  height: 50px;
+}
+
+.grid .grid-content,
+.tablescroll_wrapper,
+.tablescroll {
+  height: calc(100% - 25px);
+}
+
+.tablescroll {
+}
+
+.grid table th {
+  border-bottom: 1px solid #bbbbbb;
+  /*border-left: 1px solid #bbbbbb;*/
+  /*padding: 10px 16px !important;*/
+  text-align: left;
+}
+
+.grid table th .cell {
+  padding: 15px 16px !important;
+}
+
+.grid table td {
+  border-bottom: 1px solid #bbbbbb;
+  padding: 15px 16px !important;
+  text-align: left;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.grid table th {
+  z-index: 1;
+  position: sticky;
+  background-color: #ffffff;
+  top: 0px;
+  left: 0;
+  padding-top: 22px !important;
+  font-weight: bold !important;
+}
+
+.grid tbody tr:nth-child(2n + 1) {
+  background-color: #fafafa;
+}
+
+.grid tbody tr:hover {
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+
+.grid table td span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

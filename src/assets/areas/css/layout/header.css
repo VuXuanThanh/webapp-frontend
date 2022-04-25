@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__left {
+
+}
+.header__right {
+    display: flex;
+    align-items: center;
+}
+.header__right-avartar {
+    background: url('../../content/icon/avatar-default.png') no-repeat center center;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+}
+.header__right-user {
+    margin: 0 8px;
+}
+.header__right-icon {
+    margin-left: 8px;
+    margin-right: 16px;
+}

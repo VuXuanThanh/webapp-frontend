@@ -1,0 +1,73 @@
+/* menu icon */
+.menu {
+    display: flex;
+    flex-direction: column;
+
+}
+.menu__icon {
+    display: flex;
+    padding: 12px 16px 12px;
+
+
+}
+.menu__icon-bar {
+    background: #fff url('../../content/img/toggle.png') no-repeat center center;
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.menu__icon-logo {
+    background: #fff url('../../../img/Logo_Code_Lyoko.png') no-repeat center center;
+    background-size: 100px 24px;
+    width: 100px;
+    height: 24px;
+    cursor: pointer;
+}
+/* menu sidebar */
+.menu__sidebar {
+    display: flex;
+    flex-direction: column;
+
+}
+.menu__sidebar-link {
+    text-decoration: none;
+    height: 44px;
+    list-style: none;
+    display: block;
+    position: relative;
+}
+.menu__sidebar-dashboard {
+    background: url('../../content/icon/dashboard.png') no-repeat 16px center;
+    background-size: 20px 20px;
+    color: #fff;
+}
+.menu__sidebar-report {
+    background: #fff url('../../content/icon/report.png') no-repeat 16px center;
+    background-size: 20px 20px;
+    color: #fff;
+}
+.menu__sidebar-employee {
+    background: #fff url('../../content/icon/dic-employee.png') no-repeat 16px center;
+    background-size: 20px 20px;
+    color: #fff;
+}
+.menu__sidebar-settting {
+    background: #fff url('../../content/icon/setting.png') no-repeat 16px center;
+    background-size: 20px 20px;
+    color: #fff;
+}
+.menu__sidebar-link span{
+    color: var(--dark-color);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 44px;
+}
+
+.sidebar-link-selected, .sidebar-item-selected {
+    background-color: var(--default-color);
+    color: #fff !important;
+    border-radius: 1px;
+}

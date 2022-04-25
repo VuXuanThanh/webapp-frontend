@@ -8,8 +8,13 @@ export default {
     categories: [],
     categoryId: '',
 
+    // brand modules
+    brands: [],
+    brandId: '',
+
     /** product */
     products: [],
+    products1: [],
     product: {
         productId: '',
         productName: "",
@@ -26,7 +31,8 @@ export default {
         orgin: "",
         brandId: "",
         categoryId: "",
-        priceDeal: 0
+        priceDeal: 0,
+
 
     },
     productsImages: [],
@@ -52,7 +58,12 @@ export default {
     },
     responseCart: "",
     messageCart: false,
-    sumRecordsCart: 0
+    sumRecordsCart: 0,
+
+    // admin product
+    isShowForm: false,
+
+    // 
 
 
 }

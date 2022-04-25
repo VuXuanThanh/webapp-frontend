@@ -1,0 +1,48 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+}
+.footer__text {
+
+}
+.footer__paging {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer__paging-icon {
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.footer__paging-number {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-second-color);
+    
+
+}
+.footer__paging-item {
+   margin: 0 10px;
+   border-radius: 100%;
+   background-color: var(--default-color);
+   width: 24px;
+   height: 24px;
+   text-align: center;
+   position: relative;
+   
+}
+.footer__paging-link{
+    text-decoration: none;
+    display: block;
+    color: var(--while-color);
+    line-height: 24px;
+    
+    width: 100%;
+    height: 100%;
+}

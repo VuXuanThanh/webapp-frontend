@@ -4,13 +4,12 @@ export const validation = {
     methods: {
        
         validateInput(e){
-            // console.log(e.tagName);
             let isValid = true;
             let input = (e.tagName==='INPUT') ? e : e.target;
             let parent = input.parentElement;
             let message = parent.querySelector('.form-message');
+          
             let name = input.getAttribute('name');
-            // console.log(name);
             if(name==='Email'){
                 let mailformat = /^\w+([/.-]?\w+)*@\w+([/.-]?\w+)*(\.\w{2,3})+$/;
                 if (!input.value.match(mailformat)) {
@@ -64,14 +63,23 @@ export const validation = {
                     message.classList.remove('form-message-display');
                 }
             }
+            else if(name==='Number'){
+                if(Math.sign(input.value)!=1){
+                    this.showErrorMessage(message,'Nhập đúng định dạng số');
+                    isValid = false;
+                }
+                else {
+                    message.classList.remove('form-message-display');
+                }
+            }
             else {
-                isValid = true;
+                message.classList.remove('form-message-display');
             }
             return isValid;
         },
 
         showErrorMessage(element, message) {
-            element.innerHTML =message;
+            element.innerHTML = message;
             element.classList.add('form-message-display');
         },
 

@@ -24,18 +24,45 @@ export default {
 
     // category
     handleGetCategories(context) {
-        let category = [];
         axios.get('https://localhost:44321/api/v1/Categories')
             .then(res => {
-                category = res.data;
+                
                 context.commit('getCategories', res.data);
             })
             .catch(err => {
                 console.log(err);
             })
-        return category;
+       
     },
 
+    // brands
+    handleGetBrands(context){
+        axios.get('https://localhost:44321/api/v1/Brands')
+        .then(res => {
+            console.log(res);
+          
+            context.commit('getBrands', res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },
+
+    // get paging products 
+    handleGetProducts(context, params){
+        
+        const url = `https://localhost:44321/api/v1/Products/filter1?type=${params.type}&pageSize=${params.pageSize}&pageIndex=${params.pageIndex}`
+        axios.get(url)
+            .then(res => {
+                console.log(res.data);
+                context.commit('getProducts', res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
+
+    
     // products by category
     handleGetProductsByCategory(context, params) {
         axios.get('https://localhost:44321/api/v1/Categories')
@@ -173,5 +200,11 @@ export default {
 
     handleUpdateSumRecords(context){
         context.commit('updateSumRecords');
+    },
+
+
+    // open-close products form
+    handleToggleProductForm(context, isShow) {
+        context.commit('toggleProductForm', isShow);
     }
 }

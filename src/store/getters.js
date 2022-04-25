@@ -7,9 +7,12 @@ export default  {
 
     Categories: state => state.categories,
 
+    Brands: state=> state.brands,
+
     CategoryId: state=> state.categoryId,
 
     Products: state=> state.products,
+    Products1: state=> state.products1,
 
     Product: state=> state.product,
 
@@ -35,6 +38,8 @@ export default  {
 
     MessageCart: state=> state.messageCart,
 
-    SumRecordsCart: state=> state.sumRecordsCart
+    SumRecordsCart: state=> state.sumRecordsCart,
+
+    IsShowForm: state=> state.isShowForm
 
 }

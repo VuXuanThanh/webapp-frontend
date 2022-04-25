@@ -19,6 +19,18 @@ export default  {
         state.categories = categories;
     },
 
+    getBrands(state, brands){
+        state.brands = brands;
+    },
+
+    // get all products
+    getProducts(state, products){
+        state.products1 = products;
+    },
+
+    
+
+
     // product
     getProductsByCategory(state, products){
         state.products = products;
@@ -117,8 +129,13 @@ export default  {
 
     updateSumRecords(state){
         state.sumRecordsCart +=1;
-    }
+    },
 
+    // admin product management
+
+    toggleProductForm(state, isShow){
+        state.isShowForm = isShow;
+    }
 
     
 }

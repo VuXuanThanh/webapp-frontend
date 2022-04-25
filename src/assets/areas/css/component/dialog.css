@@ -1,0 +1,241 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* display: none; */
+  z-index: 9999;
+}
+.modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 500px;
+}
+.modal__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.modal__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.modal-form {
+  padding: 24px 0 0 24px;
+  width: 800px;
+}
+.modal__title {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.modal__main {
+  margin-top: 20px;
+}
+/* .modal__main-avartar {
+} */
+.modal__main-avatar-img {
+  background: url("../../content/img/default-avatar.jpg") no-repeat center
+    center;
+  background-size: 100px 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: 1px solid var(--dark-third-color);
+}
+/* .modal__main-avartar-cmt {
+} */
+.modal__main-form {
+  
+ 
+}
+
+.modal__main-operation {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 24px;
+  background-color: var(--dark-fifth-color);
+  margin-left: -24px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-right: 24px;
+}
+.form-scrollbar {
+  height: 500px;
+  overflow-y: scroll;
+}
+#form-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  background-color: #f5f5f5;
+  height: 7px;
+}
+
+.row__selected {
+  background: #019160 !important;
+}
+
+#form-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--dark-third-color);
+}
+#form-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+.form-heading {
+  font-size: 20px;
+  margin: 10px 0;
+}
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.form-row {
+  margin-right: 8px;
+}
+.form-group {
+  margin-bottom: 8px;
+  position: relative;
+}
+.form-control {
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  height: 40px;
+  font-size: 11px;
+  color: #000000;
+  width: 100%;
+  padding-left: 16px;
+  outline: none;
+}
+.form-control:focus {
+  border: 1px solid #019160;
+  border-radius: 4px;
+  height: 40px;
+
+  color: #000000;
+
+  width: 100%;
+  padding-left: 16px;
+}
+.form-control-required::after {
+  content: " (*) ";
+  color: red;
+}
+
+.form-message {
+  top: -32px;
+  color: #fff;
+  position: absolute;
+  background: #f65454;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  padding: 4px;
+  font-size: 13px;
+  border-radius: 4px;
+  display: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.form-message-display {
+  display: block;
+}
+
+.input__required {
+  border: 1px solid #ff4747;
+}
+
+.square__rotate {
+  background: #f65454;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  top: 35px;
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 1;
+}
+
+.dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: none;
+}
+
+.dialog__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.dialog__inner {
+  position: relative;
+  padding: 24px 24px 0 24px;
+}
+.dialog__inner-icon-exit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  display: block;
+  color: var(--dark-third-color);
+  padding: 4px;
+}
+.dialog__inner-title {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.dialog__inner-message {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  
+}
+.dialog__inner-icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: #F65454;
+}
+.dialog__inner-text {
+}
+.dialog__inner-button {
+  margin-left: -24px; 
+  margin-right: -24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--dark-fourth-color);
+  padding: 10px 0;
+}
+.dialog__inner-button-diabled {
+  margin-right: 16px;
+}
+.dialog__inner-button-confirmed {
+  margin-right: 24px;
+}

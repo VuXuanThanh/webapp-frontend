@@ -1,0 +1,40 @@
+input.m-input,
+select {
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.m-input:focus {
+  border: 1px solid #01b075;
+  outline: none;
+}
+
+.m-input-box {
+  margin-top: 4px;
+}
+
+input[type="date"] {
+  /*text-align: center;*/
+}
+
+input[type="radio"] {
+  height: 20px;
+  width: 20px;
+}
+
+input:focus,
+select:focus {
+  border-color: #019160;
+}
+
+input::placeholder {
+  font-size: 11px;
+}
+
+.input-search {
+  padding-left: 40px !important;
+}
