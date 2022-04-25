@@ -3,6 +3,9 @@ node_modules
 /dist
 .certs
 
+src/assets/areas/content/font
+
+
 # local env files
 .env.local
 .env.*.local
@@ -25,3 +28,14 @@ pnpm-debug.log*
 *.svg
 *.jpg
 *.jpg.webp
+*.otf
+*.txt
+*.ttf
+*.woft 
+*.woft2
+*.eot
+*.woff
+*.woff2
+*.ini
+
+
