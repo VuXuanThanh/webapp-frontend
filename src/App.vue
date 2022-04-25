@@ -1,35 +1,26 @@
 <template>
   <div id="app">
-    <Header/>
-    <Container/>
-    <Footer/>
+    <router-view></router-view>
   </div>
 </template>
 
 <style >
 
-@import url('./assets/css/base/base.css');
+/* @import url('./assets/css/base/base.css'); */
 </style>
 
 <script>
-import Header from './components/layout/TheHeader.vue'
-import Container from './components/layout/TheContainer.vue'
-import Footer from './components/layout/TheFooter.vue'
+// import Header from './components/layout/TheHeader.vue'
+// import Container from './components/layout/TheContainer.vue'
+// import Footer from './components/layout/TheFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Container,
-    Footer
+    // Header,
+    // Container,
+    // Footer
   },
 
-  mounted() {
-    console.log('App mounted')
-  },
-
-  updated() {
-    console.log('updated app')
-  }
 }
 </script>
