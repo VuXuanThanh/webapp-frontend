@@ -1,7 +1,7 @@
 <template>
   <div class="registration" :status="UserId">
     <div class="form">
-      <div class="form-title">Đăng nhập</div>
+      <div class="form-title">Đăng nhập quản trị viên </div>
 
       <div class="user-error" v-if="IsError">
         <div class="user-error-icon">
@@ -11,7 +11,7 @@
       </div>
 
       <div class="form-group">
-        <div class="form-label form-label-mark">Địa chỉ Email</div>
+        <div class="form-label form-label-mark">Tên đăng nhập</div>
         <input
           type="text"
           name="Email"
@@ -42,12 +42,7 @@
       <div class="form-information">
         Bạn quên mật khẩu?
         <router-link to="/" class="form-information-link">Quên mật khẩu</router-link>
-      </div>
-
-       <div class="form-information">
-        Bạn chưa có tài khoản?
-        <router-link to="/registration" class="form-information-link">Đăng kí ngay</router-link>
-      </div>
+      </div>    
 
       <p class="note">{{UserId}}</p>
 
@@ -57,6 +52,7 @@
 </template>
 
 <script>
+import axios from "axios";
   import { mapActions, mapGetters, mapMutations } from "vuex";
 
   import { validation } from "../../mixins/validation";
@@ -91,27 +87,17 @@
 
       loginUser() {
         let me = this;
-        let x = me.$el;
-        console.log(x);
-        console.log("validate du lieu truoc khi gui");
-        console.log(me.Age);
         let isValid = me.validate();
         if (isValid) {
-          me.handleLogin(me.authenticateRequest);
-          console.log(`state ma khach hanf ${me.UserId} hihi`);
-          // let userIdCookie = me.$cookies.get("_userId")
-
-          // me.$router.push({ path: '/' });
+            axios.post('https://localhost:44321/api/v1/Users/login', me.authenticateRequest, { withCredentials: true })
+            .then(res=> {
+                console.log(res)
+                me.$router.push({path: '/admin/product'});
+            })
+            .catch(err=> {
+                console.log(err.response);
+            })
         }
-        console.log("vu xuan thanh==================");
-        let y = me.$el.querySelector(".note");
-
-        console.log(y.innerHTML);
-        // console.log('get coooki name', this.$cookies.get('_user'));
-      },
-
-      getCookie123() {
-        console.log(this.$cookies.get("_userId"));
       },
 
       getInforUser() {
@@ -127,19 +113,14 @@
       }
     },
     mounted() {
-      window.scrollTo(0, 0);
-      console.log("login mouted");
+    
+
     },
-    updated() {
-      console.log("login updated");
-      let y = this.$cookies.get("_userId");
-      if (y != null) {
-        this.$router.go(-1);
-      }
-    },
+    
   };
 </script>
 
 <style scoped>
+@import url("../../assets/css/base/base.css");
 @import url("../../assets/css/page/registration.css");
 </style>

@@ -5,25 +5,27 @@
       <div class="menu__icon-logo"></div>
     </div>
     <div class="menu__sidebar">
-      <a class="menu__sidebar-link menu__sidebar-dashboard" href="#">
-        <span >Tổng quan</span>
+      <a class="menu__sidebar-link menu__sidebar-dashboard sidebar-link-selected" href="/admin" @click="clickMenuItem">
+        <span class="sidebar-item-selected">Tổng quan</span>
       </a>
-      <a class="menu__sidebar-link menu__sidebar-dashboard sidebar-link-selected" href="#">
-        <span class="sidebar-item-selected">Quản lí sản phẩm</span>
+      <a
+        @click="clickMenuItem"
+        class="menu__sidebar-link menu__sidebar-dashboard "
+        href="/admin/product"
+      >
+        <span >Quản lí sản phẩm</span>
       </a>
-      <a class="menu__sidebar-link menu__sideba" href="#">
-        <span >Quản lí danh mục</span>
+      <a @click="clickMenuItem" class="menu__sidebar-link menu__sideba" href="#">
+        <span>Quản lí danh mục</span>
       </a>
-      <a class="menu__sidebar-link menu__sideba" href="#">
-        <span>Quản lí hóa đơn</span>
-      </a>
-      <a class="menu__sidebar-link menu__sidebar-settting" href="#">
+
+      <a @click="clickMenuItem" class="menu__sidebar-link menu__sidebar-settting" href="#">
         <span>Quản lí nhà cung cấp</span>
       </a>
-      <a class="menu__sidebar-link menu__sidebar-settting" href="#">
-        <span>Quản lí khách hàng</span>
+      <a @click="clickMenuItem" class="menu__sidebar-link menu__sidebar-settting" href="#">
+        <span>Quản lí thương hiệu</span>
       </a>
-       <a class="menu__sidebar-link menu__sidebar-report" href="#">
+      <a @click="clickMenuItem" class="menu__sidebar-link menu__sidebar-report" href="#">
         <span>Báo cáo</span>
       </a>
     </div>
@@ -32,7 +34,33 @@
 
 <script>
   export default {
-    name: 'MenuAdmin'
+    name: "MenuAdmin",
+
+    methods: {
+      clickMenuItem(e) {
+        let me = this;
+        e.preventDefault();
+        let tagName = e.target.tagName;
+        let href = "";
+        if (tagName == "SPAN") {
+          let parent = e.target.parentElement;
+          href = parent.getAttribute("href");
+
+          let itemSelected = me.$el.querySelector('.sidebar-item-selected')
+          let parentSelected = me.$el.querySelector('.sidebar-link-selected')
+          if(itemSelected) {
+            itemSelected.classList.remove("sidebar-item-selected");
+            parentSelected.classList.remove("sidebar-link-selected");
+
+            e.target.classList.add("sidebar-item-selected")
+            parent.classList.add("sidebar-link-selected");
+          }
+        } else {
+          href = e.target.getAttribute("href");
+        }
+        me.$router.push({ path: href });
+      },
+    },
   };
 </script>
 

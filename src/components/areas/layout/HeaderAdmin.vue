@@ -8,18 +8,11 @@
           <li class="combobox__content-item combobox__content-item-selected">
             <i class="combobox__item-icon combobox__item-icon-selected fas fa-check"></i>
             <span class="combobox__item-value combobox__item-value-selected">
-              Nhà hàng Biển
-              Nam
+             Đăng xuất
             </span>
           </li>
-          <li class="combobox__content-item">
-            <i class="fas fa-check combobox__item-icon"></i>
-            <span class="combobox__item-value">Nhà hàng Biển Đông</span>
-          </li>
-          <li class="combobox__content-item">
-            <i class="fas fa-check combobox__item-icon"></i>
-            <span class="combobox__item-value">Nhà hàng Biển Bắc</span>
-          </li>
+          
+          
         </ul>
       </div>
     </div>

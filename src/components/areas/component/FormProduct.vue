@@ -372,9 +372,10 @@
           if (me.formMode == 1) {
            console.log(me.item)
            
-           axios.post( `https://localhost:44321/api/v1/Products`, me.item)
+           axios.post( `https://localhost:44321/api/v1/Products`, me.item, { withCredentials: true })
             .then(res=> {
               console.log(res);
+               me.handleToggleProductForm(false);
             })
             .catch(err=> {
               console.log(err);
@@ -386,7 +387,7 @@
             axios
               .put(
                 `https://localhost:44321/api/v1/Products`,
-                me.item
+                me.item, { withCredentials: true }
               )
               .then((res) => {
                 console.log(res);
@@ -468,5 +469,7 @@
   };
 </script>
 
-<style>
+<style scoped>
+@import url('../../../assets/css/base/base.css');
+
 </style>

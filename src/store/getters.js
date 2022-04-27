@@ -1,6 +1,16 @@
 export default  {
     // UserName: state=>  "UserName: "+state.userName,
 
+    Orders: state=> state.orders,
+
+    TotalRecords: state=> state.totalRecords,
+     
+    SuccessOrders: state=> state.successOrders,
+
+    PendingOrders: state=> state.pendingOrders,
+
+    TotalMoney: state=> state.totalMoney,
+
     Age: state =>  state.age + "year old",
 
     Posts: state => state.posts,

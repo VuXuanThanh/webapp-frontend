@@ -1,5 +1,15 @@
 
 export default  {
+
+    getOrders(state, orders) {
+        state.orders = orders.data;
+        state.totalRecords = orders.totalRecords;
+        state.successOrders = orders.successOrders;
+        state.pendingOrders = orders.pendingOrders;
+        state.totalMoney = orders.totalMoney
+    },
+
+
     changUserName(state, newUserName) {
         console.log(state);
         state.userName = newUserName

@@ -4,6 +4,13 @@ export default {
     age: 10,
     posts: [],
 
+    // order module
+    orders: [],
+    order: {},
+    totalRecords: 0 ,
+    successOrders: 0 ,
+    pendingOrders: 0 ,
+    totalMoney: 0,
     /** category module */
     categories: [],
     categoryId: '',

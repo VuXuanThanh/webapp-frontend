@@ -285,7 +285,7 @@
           statusOrder: 0,
           payment: 0,
           total: 0,
-          userId: "",
+          usersId: "",
           discountId: "",
           receivingAddress: "",
           note: "",
@@ -327,7 +327,7 @@
             .querySelector(".payment-sum")
             .getAttribute("value");
           me.order.total = sumTotal;
-          (me.order.userId = me.$cookies.get("_userId")),
+          (me.order.usersId = me.$cookies.get("_userId")),
             console.log("call API", me.order);
           axios
             .post("https://localhost:44321/api/v1/Orders", me.order, {

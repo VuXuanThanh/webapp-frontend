@@ -1,5 +1,38 @@
 import axios from 'axios'
 export default {
+
+    // order modules
+    handleGetOrders(context) {
+        axios.get('https://localhost:44321/api/v1/Orders')
+            .then(res=> {
+                context.commit('getOrders', res.data) 
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    },
+
+    handleUpdateOrderById(context, order) {
+        axios.put('https://localhost:44321/api/v1/Orders', order)
+            .then(res=> {
+                if(res.status==200) {
+                    axios.get('https://localhost:44321/api/v1/Orders')
+                    .then(res=> {
+                        context.commit('getOrders', res.data) 
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                }
+                else    
+                    console.log(res);
+            })
+            .catch(err=> {
+                console.log(err);
+            })
+
+    },
+
     handleChangeUserName(context, newUserName) {
         console.log(newUserName);
         context.commit('changUserName', newUserName);
