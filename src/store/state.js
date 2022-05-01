@@ -4,6 +4,14 @@ export default {
     age: 10,
     posts: [],
 
+    // role module
+    roles: [],
+    role: {},
+
+    // users module
+    users: [],
+    user: {},
+
     // order module
     orders: [],
     order: {},

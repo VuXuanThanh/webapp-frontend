@@ -1,9 +1,9 @@
 <template>
-  <div class="registration" :status="UserId">
+  <div class="registration" :status="UserId" >
     <div class="form">
-      <div class="form-title">Đăng nhập quản trị viên </div>
+      <div class="form-title">Đăng nhập quản trị Lyoko </div>
 
-      <div class="user-error" v-if="IsError">
+      <div class="user-error" v-if="false">
         <div class="user-error-icon">
           <i class="fa-solid fa-triangle-exclamation error-icon-error"></i>
         </div>
@@ -39,10 +39,7 @@
             chuyển
       </button>-->
 
-      <div class="form-information">
-        Bạn quên mật khẩu?
-        <router-link to="/" class="form-information-link">Quên mật khẩu</router-link>
-      </div>    
+      
 
       <p class="note">{{UserId}}</p>
 
@@ -63,6 +60,7 @@ import axios from "axios";
         authenticateRequest: {
           email: "",
           passwords: "",
+          isManage: 1
         },
       };
     },
@@ -96,6 +94,7 @@ import axios from "axios";
             })
             .catch(err=> {
                 console.log(err.response);
+                alert('Thông tin đăng nhập không chính xác')
             })
         }
       },
@@ -121,6 +120,87 @@ import axios from "axios";
 </script>
 
 <style scoped>
-@import url("../../assets/css/base/base.css");
-@import url("../../assets/css/page/registration.css");
+@import url('../../assets/css/base/base.css');
+.registration {
+   display: flex;
+   padding: 32px;
+}
+.form {
+  margin: 0 auto;
+  min-width: 500px;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+ 
+  
+
+}
+.form-title {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--primary-color);
+
+}
+.form-group {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  margin-top: 30px;
+
+}
+.form-label {
+  font-weight: 500;
+
+}
+.form-label-mark::after {
+  content: "*";
+  color: red;
+  margin-left: 3px;
+  font-weight: 600;
+}
+.form-control {
+  width: 100%;
+  border: 1px solid #D3D7DE;
+  height: 40px;
+  padding: 8px 20px;
+  border-radius: 8px;
+
+}
+.form-message {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  font-size: 1.3rem;
+  color: red;
+  display: none;
+
+}
+.form-message-display {
+  display: block;
+}
+.form-button {
+  margin-top: 25px;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  height: 40px;
+  background: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+}
+
+.form-information {
+  font-size: 1.5rem;
+  margin-top: 25px;
+}
+.form-information-link {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+.form-information-security {
+  margin-top: 40px;
+}
 </style>

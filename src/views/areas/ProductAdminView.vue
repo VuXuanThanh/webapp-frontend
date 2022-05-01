@@ -12,65 +12,15 @@
       <div class="content__bottom">
         <div class="content__bottom-left">
           <div class="content__search">
-            <i class="content__search-icon fas fa-search"></i>
+            <i class="content__search-icon fas fa-search" @click="searchProductByName"></i>
             <input
               class="content__search-input"
-              placeholder="Vui lòng nhập theo mã, tên hoặc số điện thoại"
+              placeholder="Vui lòng nhập theo tên sản phẩm để tìm kiếm"
             />
-          </div>
-          <div class="combobox combobox__department">
-            <input class="combobox__input" value="Tất cả danh mục" />
-            <i class="fas fa-chevron-down combobox__icon"></i>
-            <ul class="combobox__content">
-              <li class="combobox__content-item combobox__content-item-selected">
-                <i class="combobox__item-icon combobox__item-icon-selected fas fa-check"></i>
-                <span class="combobox__item-value combobox__item-value-selected">
-                  Tất cả phòng
-                  ban
-                </span>
-              </li>
-              <li class="combobox__content-item">
-                <i class="fas fa-check combobox__item-icon"></i>
-                <span class="combobox__item-value">Phòng hành chính</span>
-              </li>
-              <li class="combobox__content-item">
-                <i class="fas fa-check combobox__item-icon"></i>
-                <span class="combobox__item-value">Phòng kế toán</span>
-              </li>
-              <li class="combobox__content-item">
-                <i class="fas fa-check combobox__item-icon"></i>
-                <span class="combobox__item-value">Phòng nhân sự</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="combobox combobox__position">
-            <input class="combobox__input" value="Tất cả các nhà cung cấp" />
-            <i class="fas fa-chevron-down combobox__icon"></i>
-            <ul class="combobox__content">
-              <li class="combobox__content-item combobox__content-item-selected">
-                <i class="combobox__item-icon combobox__item-icon-selected fas fa-check"></i>
-                <span class="combobox__item-value combobox__item-value-selected">
-                  Tất cả các vị
-                  trí
-                </span>
-              </li>
-              <li class="combobox__content-item">
-                <i class="fas fa-check combobox__item-icon"></i>
-                <span class="combobox__item-value">Trưởng phòng</span>
-              </li>
-              <li class="combobox__content-item">
-                <i class="fas fa-check combobox__item-icon"></i>
-                <span class="combobox__item-value">Nhân viên</span>
-              </li>
-            </ul>
           </div>
         </div>
 
         <div class="content__bottom-right">
-          <div class="btn-delete">
-            <i class="btn-icon fas fa-trash-alt"></i>
-          </div>
           <div class="btn-refresh" @click="refreshListProduct">
             <i class="btn-icon fas fa-sync-alt"></i>
           </div>
@@ -99,10 +49,15 @@
           </thead>
 
           <tbody class="list-body">
-            <tr class="list-row" v-for="product in Products1.data" :key="product.productId" :id="product.productId">
+            <tr
+              class="list-row"
+              v-for="product in Products1.data"
+              :key="product.productId"
+              :id="product.productId"
+            >
               <td class="list-cell">
                 <div class="list-cell-check">
-                  <i class="fa-solid fa-delete-left" @click="clickCheckboxRowProduct" ></i>
+                  <i class="fa-solid fa-delete-left" @click="clickCheckboxRowProduct"></i>
                   <i class="fa-solid fa-user-pen icon-update" @click="updateProductById"></i>
                 </div>
               </td>
@@ -127,14 +82,34 @@
       <v-pagination v-model="page" :length="Products1.totalPage" :total-visible="7"></v-pagination>
     </footer>
 
-    <FormProduct v-if="IsShowForm" :formMode="formMode" :productId="productId"/>
+    <FormProduct v-if="IsShowForm" :formMode="formMode" :productId="productId" />
+
+    <div class="dialog" v-if="isShowDialog">
+      <div class="dialog__content">
+        <div class="dialog__inner">
+          <i class="dialog__inner-icon-exit fas fa-times"></i>
+          <div class="dialog__inner-title">Xác nhận xóa</div>
+          <div class="dialog__inner-message">
+            <i class="dialog__inner-icon fas fa-exclamation-triangle"></i>
+            <div class="dialog__inner-text">Bạn chắc chắn muốn xóa bản ghi này</div>
+          </div>
+          <div class="dialog__inner-button">
+            <button class="button dialog__inner-button-diabled" @click="confirmDeleteProduct">Hủy</button>
+            <button class="button dialog__inner-button-confirm" @click="confirmDeleteProduct">Xóa</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+ 
   import axios from "axios";
   import { mapActions, mapGetters, mapMutations } from "vuex";
   import FormProduct from "../../components/areas/component/FormProduct.vue";
+  import { validation } from "../../mixins/validation";
+  import { toast } from "../../mixins/showToast";
   export default {
     name: "product-admin",
     data() {
@@ -144,15 +119,22 @@
         params: {
           type: 0,
           categoryId: "",
+          productName: "",
+          priceMin: 0,
+          priceMax: 0,
+          brandId: "",
           pageSize: 24,
           pageIndex: 1,
         },
 
         isShowForm: false,
         formMode: 1,
-        productId: '',
+        productId: "",
+
+        isShowDialog: false,
       };
     },
+    mixins: [validation, toast],
 
     components: {
       FormProduct,
@@ -164,6 +146,7 @@
         "CategoryId",
         "ProductImages",
         "IsShowForm",
+        "UserMsg"
       ]),
     },
     methods: {
@@ -180,35 +163,60 @@
         "getImageByProduct",
       ]),
 
-      showFormProduct() {
-        this.handleToggleProductForm(true);
-        this.productId = 'NULL'
+      searchProductByName(e) {
+        let searchString = e.target.parentElement.querySelector("input").value;
+        if (searchString) {
+          this.params.type = 4;
+          this.params.productName = searchString;
+          this.handleGetProducts(this.params);
+        }
       },
 
-      refreshListProduct(){
+      showFormProduct() {
+        this.handleToggleProductForm(true);
+        this.productId = "NULL";
+      },
+
+      refreshListProduct() {
+        this.params.type = 0;
         this.handleGetProducts(this.params);
       },
 
       updateProductById(e) {
-        let productId = e.target.parentElement.parentElement.parentElement.getAttribute("id")
+        let productId =
+          e.target.parentElement.parentElement.parentElement.getAttribute("id");
         this.productId = productId;
         this.formMode = 2;
         this.handleToggleProductForm(true);
-
+        this.handleGetProducts(this.params);
       },
 
       clickCheckboxRowProduct(e) {
-        e.target.classList.toggle("cart-checkbox-selected");
-        let id = e.target.parentElement.parentElement.parentElement.getAttribute("id");
-         axios
-              .delete(`https://localhost:44321/api/v1/Products/${id}`)
-              .then((res) => {0
-                console.log(res);
-                this.handleGetProducts(this.params);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
+        this.productId = e.target.parentElement.parentElement.parentElement.getAttribute("id");
+        this.isShowDialog = true;
+      },
+
+      confirmDeleteProduct(e) {
+        let me = this;
+        let className = e.target.className;
+        console.log(className)
+        if (className.includes("dialog__inner-button-diabled"))
+          this.isShowDialog = false;
+        else {
+          axios
+            .delete(`https://localhost:44321/api/v1/Products/${me.productId}`, {
+              withCredentials: true,
+            })
+            .then((res) => {
+              console.log(res);
+              me.isShowDialog = false;
+              me.handleGetProducts(me.params);
+              me.showSuccessToast('Đã xóa thành công');
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       },
 
       formatPrice(price) {
@@ -239,7 +247,11 @@
     },
 
     created() {
-      this.handleGetProducts(this.params);
+      let x = this.handleGetProducts(this.params);
+      console.log('Gia tri tu action', x);
+    },
+    mounted() {
+      console.log('Loi cho nguoi dung',this.UserMsg)
     },
     updated() {
       this.clickPaginationItem();
@@ -247,7 +259,24 @@
   };
 </script>
 
+
+<style scoped>
+
+@import url('../../assets/areas/css/main.css');
+.combobox__content-item {
+   padding: 16px !important;
+}
+.list-cell-check i {
+  cursor: pointer;
+}
+.product-admin {
+  padding: 8px;
+}
+</style>
 <style>
+.content {
+  padding: 0 !important;
+}
 .theme--light.v-pagination .v-pagination__item--active {
   color: #fff;
   background: #fd5f32 !important;

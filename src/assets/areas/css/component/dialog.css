@@ -180,8 +180,8 @@
   left: 0;
   display: block;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 999;
-  display: none;
+  z-index: 99999;
+  display: block;
 }
 
 .dialog__content {
@@ -235,7 +235,10 @@
 }
 .dialog__inner-button-diabled {
   margin-right: 16px;
+;
+
 }
-.dialog__inner-button-confirmed {
+.dialog__inner-button-confirm {
   margin-right: 24px;
+  background-color: #333 !important;
 }

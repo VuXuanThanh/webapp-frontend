@@ -1,6 +1,28 @@
 import axios from 'axios'
 export default {
 
+
+    handleGetRoles(context) {
+        axios.get('https://localhost:44321/api/v1/Users/roles')
+        .then(res=> {
+            context.commit('getRoles', res.data) 
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },
+
+    handleGetUsers(context) {
+        axios.get('https://localhost:44321/api/v1/Users')
+        .then(res=> {
+            context.commit('getUsers', res.data) 
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    },
+
+
     // order modules
     handleGetOrders(context) {
         axios.get('https://localhost:44321/api/v1/Orders')
@@ -84,7 +106,8 @@ export default {
     // get paging products 
     handleGetProducts(context, params){
         
-        const url = `https://localhost:44321/api/v1/Products/filter1?type=${params.type}&pageSize=${params.pageSize}&pageIndex=${params.pageIndex}`
+        const url = `https://localhost:44321/api/v1/Products/filter1?type=${params.type}&categoryId=${params.categoryId}
+        &productName=${params.productName}&priceMin=${params.priceMin}&priceMax=${params.priceMax}&brandId=${params.brandId}&pageSize=${params.pageSize}&pageIndex=${params.pageIndex}`
         axios.get(url)
             .then(res => {
                 console.log(res.data);
@@ -92,7 +115,9 @@ export default {
             })
             .catch(err => {
                 console.log(err)
+                context.commit('setUserError', 'Đã có lỗi xảy ra liên hệ Lyoko để được trợ giúp')
             })
+
     },
 
     

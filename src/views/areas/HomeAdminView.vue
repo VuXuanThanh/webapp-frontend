@@ -131,6 +131,8 @@
 </script>
 
 <style scoped>
+@import url('../../assets/areas/css/main.css');
+@import url('../../assets/css/base/grid.css');
 .admin-order {
   height: 120px;
   border-radius: 10px;

@@ -1,6 +1,18 @@
 
 export default  {
 
+    setUserError(state, error) {
+        state.userMsg = error;
+    },
+
+    getRoles(state, role){
+        state.roles = role;
+    },
+
+    getUsers(state, users) {
+        state.users = users;
+    },
+
     getOrders(state, orders) {
         state.orders = orders.data;
         state.totalRecords = orders.totalRecords;

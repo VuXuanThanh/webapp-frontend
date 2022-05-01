@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -89,6 +90,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/areas/AdministratorView.vue'),
+    meta: {
+      requiredAuthorization: true, // You can enable/disable authorization 
+      roles: ['admin'] // This can be accessed by only admin
+   },
     children: [
 
       {
@@ -118,6 +123,35 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/areas/ProductAdminView.vue')
       },
 
+      {
+        path: 'category',
+        name: 'category-admin',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/areas/CategoryAdminView.vue')
+      },
+
+      {
+        path: 'brand',
+        name: 'brand-admin',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/areas/BrandAdminView.vue')
+      },
+
+      {
+        path: 'users',
+        name: 'users-admin',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/areas/UsersAdminView.vue')
+      },
+
+
+     
     
       
 
@@ -127,7 +161,7 @@ const routes = [
   },
 
   {
-    path: '/admin/login',
+    path: '/administrator/login',
     name: 'login-admin',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -141,10 +175,13 @@ const routes = [
 
 ]
 
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
 
-export default router
+
+
+export default router;

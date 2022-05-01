@@ -171,21 +171,17 @@
                       <div class="combobox combobox__position">
                         <input
                           class="form-control combobox__input combobox__input-category"
+                          name="Required"
                           value
+                          @blur="validateInput"
                           id
                         />
+                        <div class="form-message">
+                          <p>Vui long dien truong nay</p>
+                          <div class="square__rotate"></div>
+                        </div>
                         <i class="fas fa-chevron-down combobox__icon" @click="showComboboxForm"></i>
                         <ul class="combobox__content">
-                          <!-- <li class="combobox__content-item combobox__content-item-selected">
-                            <i
-                              class="combobox__item-icon combobox__item-icon-selected fas fa-check"
-                            ></i>
-                            <span class="combobox__item-value combobox__item-value-selected">
-                              Tất
-                              cả các vị
-                              trí
-                            </span>
-                          </li>-->
                           <li
                             class="combobox__content-item"
                             @click="chooseItemCombobox"
@@ -206,19 +202,15 @@
                     <div class="form-group">
                       <label for="name" class="form-label">Thương hiệu</label>
                       <div class="combobox combobox__department">
-                        <input class="form-control combobox__input combobox__input-brand" value id />
+                        <input
+                          class="form-control combobox__input combobox__input-brand"
+                          name="Required"
+                          @blur="validateInput"
+                          value
+                          id
+                        />
                         <i class="fas fa-chevron-down combobox__icon" @click="showComboboxForm"></i>
                         <ul class="combobox__content">
-                          <!-- <li class="combobox__content-item combobox__content-item-selected">
-                            <i
-                              class="combobox__item-icon combobox__item-icon-selected fas fa-check"
-                            ></i>
-                            <span class="combobox__item-value combobox__item-value-selected">
-                              Tất
-                              cả phòng
-                              ban
-                            </span>
-                          </li>-->
                           <li
                             class="combobox__content-item"
                             @click="chooseItemCombobox"
@@ -252,7 +244,7 @@
           </div>
         </div>
       </div>
-      <div class="dialog">
+      <!-- <div class="dialog">
         <div class="dialog__content">
           <div class="dialog__inner">
             <i class="dialog__inner-icon-exit fas fa-times"></i>
@@ -267,7 +259,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -276,36 +268,35 @@
   import axios from "axios";
   import { mapActions, mapGetters } from "vuex";
   import { validation } from "../../../mixins/validation";
+  import { toast } from "../../../mixins/showToast";
   export default {
     name: "FormProduct",
-    mixins: [validation],
-
+    mixins: [validation, toast],
     props: {
       formMode: Number,
       productId: String,
     },
     data() {
       return {
-        
         item: {
-          productId: '',
+          productId: "",
           productName: "smdnsbdsnbd",
-          summary: '',
-          descriptions: '',
+          summary: "",
+          descriptions: "",
           priceOrgin: 0,
           statusProduct: true,
-          material: '',
-          accessory: '',
-          weights: '',
-          dimension: '',
+          material: "",
+          accessory: "",
+          weights: "",
+          dimension: "",
           star: 5,
-          powers: '',
-          orgin: '',
-          brandId: '',
-          categoryId: '',
+          powers: "",
+          orgin: "",
+          brandId: "",
+          categoryId: "",
           priceDeal: 0,
-          brandName: '',
-          categoryName: '',
+          brandName: "",
+          categoryName: "",
         },
 
         product2: {
@@ -339,7 +330,6 @@
         "ProductImages",
         "IsShowForm",
         "Brands",
-       
       ]),
     },
 
@@ -360,7 +350,7 @@
         // console.log(this.product)
 
         if (isValid) {
-           me.item.priceOrgin = parseInt(me.item.priceOrgin);
+          me.item.priceOrgin = parseInt(me.item.priceOrgin);
           me.item.priceDeal = parseInt(me.item.priceDeal);
           console.log(me.item.priceOrgin, typeof me.item.priceOrgin);
           me.item.categoryId = me.$el
@@ -370,28 +360,31 @@
             .querySelector(".combobox__input-brand")
             .getAttribute("id");
           if (me.formMode == 1) {
-           console.log(me.item)
-           
-           axios.post( `https://localhost:44321/api/v1/Products`, me.item, { withCredentials: true })
-            .then(res=> {
-              console.log(res);
-               me.handleToggleProductForm(false);
-            })
-            .catch(err=> {
-              console.log(err);
-            })
-            
+            console.log(me.item);
+
+            axios
+              .post(`https://localhost:44321/api/v1/Products`, me.item, {
+                withCredentials: true,
+              })
+              .then((res) => {
+                console.log(res);
+                me.handleToggleProductForm(false);
+                me.showSuccessToast('Đã thêm thành công 1 bản ghi mới');
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           } else {
             console.log("ma san pham", me.productId);
             console.log(me.product2);
             axios
-              .put(
-                `https://localhost:44321/api/v1/Products`,
-                me.item, { withCredentials: true }
-              )
+              .put(`https://localhost:44321/api/v1/Products`, me.item, {
+                withCredentials: true,
+              })
               .then((res) => {
                 console.log(res);
-                  me.handleToggleProductForm(false);
+                me.handleToggleProductForm(false);
+                 me.showSuccessToast('Đã cập nhật thành công 1 bản ghi');
               })
               .catch((err) => {
                 console.log(err);
@@ -446,30 +439,28 @@
     mounted() {
       let me = this;
       console.log("form product mounted");
-       console.log(me.product);
+      console.log(me.product);
       console.log("ma san pham", me.productId);
-      if(me.productId!=null) {
+      if (me.productId != null) {
         // get product by id
-        axios.get(`https://localhost:44321/api/v1/Products/${me.productId}`)
-            .then(res=> {
-              console.log(res.data);
-              for (const key in me.item) {
-                me.item[key] = res.data[key];
-              }
+        axios
+          .get(`https://localhost:44321/api/v1/Products/${me.productId}`)
+          .then((res) => {
+            console.log(res.data);
+            for (const key in me.item) {
+              me.item[key] = res.data[key];
+            }
 
-              console.log(me.item)
-                
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            console.log(me.item);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
-      
     },
   };
 </script>
 
 <style scoped>
-@import url('../../../assets/css/base/base.css');
-
+@import url('../../../assets/areas/css/component/dialog.css');
 </style>

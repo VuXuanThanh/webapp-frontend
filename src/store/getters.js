@@ -1,6 +1,10 @@
 export default  {
     // UserName: state=>  "UserName: "+state.userName,
 
+    Roles: state=> state.roles,
+
+    Users: state =>state.users,
+
     Orders: state=> state.orders,
 
     TotalRecords: state=> state.totalRecords,

@@ -6,8 +6,7 @@
 @import url("./component/icon.css");
 @import url("./component/combobox.css");
 @import url("./component/table.css");
-@import url("./component/dialog.css");
-@import url("./component/input.css");
+/* @import url("./component/input.css"); */
 @import url("./component/toolbar.css");
 @import url("./component/grid.css");
 @import url("./component/validate.css");
@@ -17,8 +16,20 @@
 
 
 :root{
-  --primary-color: #01B075;
-  --hover-color: #2FBE8E;
+
+  --hover-color: #fd5f32;
+
+  --primary-color: #EE4D2D;
+  --while-color: #fff;
+  --black-color: #000;
+  --text-color: #333;
+  --border-color: #dbdbdb;
+  --star-gold-color: #ffc33e;
+  --header-height: 120px;
+  --navbar-height: 34px;
+
+  /* --primary-color: #01B075; */
+  /* --hover-color: #2FBE8E; */
   --default-color: #019160;
   --focus-color: #019160;
 
@@ -38,44 +49,23 @@
 }
 @font-face {
   font-family: GoogleSans;
-  src: url("../content/font/GoogleSans-Regular.otf");
+  src: url("../../font/Roboto-Regular.ttf");
 }
 
-@font-face {
-  font-family: GoogleSans Bold;
-  src: url("../content/font/GoogleSans-Bold.otf");
-}
-
-@font-face {
-  font-family: GoogleSans Italic;
-  src: url("../content/font/GoogleSans-Italic.otf");
-}
-
-/* ::-webkit-scrollbar {
-  width: 5px !important;
-  height: 5px !important;
-  z-index: 1231232123421;
-}
-
-::-webkit-scrollbar-track {
-  width: 6px;
-  background-color: #bbb;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #808080;
-  border-radius: 8px;
-} */
 
 body {
   font-family: GoogleSans;
-  font-size: 13px;
+  font-size: 1.3rem;
   margin: 0;
   min-width: 1024px;
+}
+* {
+  font-size: 1.3rem;
 }
 
 html, body{
   height: 100%;
+  font-size: 62.5% !important;
 }
 .app{
   display: grid;
@@ -99,6 +89,3 @@ html, body{
 .footer {
   /* border-top: 1px solid #e5e5e5; */
 }
-
-
-@import url('../../css/base/base.css');

@@ -6,7 +6,11 @@
 
 <script>
 export default {
-  name: 'ContentAdmin'
+  name: 'ContentAdmin',
+
+  created() {
+    console.log(this.$cookies.get("_userId"))
+  }
 
 }
 </script>
